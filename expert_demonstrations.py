@@ -183,7 +183,31 @@ def get_expert_policy(env_name):
         'StopTheFall' : expert_stf_policy,
         'Chase' : expert_ec_policy,
         'ReachForTheStar' : expert_rfts_policy
+        'PlayingXYZ': expert_xyz_policy
     }[env_name]
+
+def expert_xyz_policy(layout):
+    if np.argwhere(layout == xyz.X):
+        X_r, X_c = np.argwhere(layout == xyz.X)[0]
+    else: X_r, X_c = -1, -1
+    if np.argwhere(layout == xyz.Y):
+        Y_r, Y_c = np.argwhere(layout == xyz.Y)[0]
+    else: Y_r, Y_c = -1, -1
+    if np.argwhere(layout == xyz.Z):
+        Z_r, Z_c = np.argwhere(layout == xyz.Z)[0]
+    else: Z_r, Z_c = -1, -1
+    totalXYZ = {'X':(X_r,X_c),'Y':(Y_r,Y_c),'Z':(Z_r,Z_r)}
+
+    for key, val in totalXYZ.items():
+        if val == (-1,-1):
+            return 
+
+
+    Y_r, Y_c = np.argwhere(layout == xyz.Y)[0]
+    Z_r, Y_c = np.argwhere(layout == xyz.Z)[0]
+    right_arrow = tuple(np.argwhere(layout == rfts.RIGHT_ARROW)[0])
+    left_arrow = tuple(np.argwhere(layout == rfts.LEFT_ARROW)[0])
+
 
 
 def get_demonstrations(env_name, demo_numbers=(1, 2, 3, 4), max_demo_length=np.inf):
