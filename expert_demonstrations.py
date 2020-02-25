@@ -5,6 +5,8 @@ import gym
 import os
 
 import numpy as np
+import matplotlib
+matplotlib.use('TkAgg')
 
 
 
@@ -183,7 +185,7 @@ def get_expert_policy(env_name):
         'StopTheFall' : expert_stf_policy,
         'Chase' : expert_ec_policy,
         'ReachForTheStar' : expert_rfts_policy,
-        'PlayingXYZ': expert_xyz_policy
+        'PlayingWithXYZ': expert_xyz_policy
     }[env_name]
 
 def expert_xyz_policy(layout):
