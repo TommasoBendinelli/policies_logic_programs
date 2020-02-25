@@ -182,7 +182,7 @@ def get_expert_policy(env_name):
         'CheckmateTactic' : expert_checkmate_tactic_policy,
         'StopTheFall' : expert_stf_policy,
         'Chase' : expert_ec_policy,
-        'ReachForTheStar' : expert_rfts_policy
+        'ReachForTheStar' : expert_rfts_policy,
         'PlayingXYZ': expert_xyz_policy
     }[env_name]
 
@@ -198,9 +198,12 @@ def expert_xyz_policy(layout):
     else: Z_r, Z_c = -1, -1
     totalXYZ = {'X':(X_r,X_c),'Y':(Y_r,Y_c),'Z':(Z_r,Z_r)}
 
+    ground_truth = {'X': (1,2),'Y':(1,1),'Z':(1,0)}
     for key, val in totalXYZ.items():
         if val == (-1,-1):
-            return 
+            return ground_truth[key]
+    return (-1,-1)
+    
 
 
     Y_r, Y_c = np.argwhere(layout == xyz.Y)[0]
