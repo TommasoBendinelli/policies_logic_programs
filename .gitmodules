@@ -1,0 +1,3 @@
+[submodule "generalization_grid_games"]
+	path = generalization_grid_games
+	url = https://github.com/TommasoBendinelli/generalization_grid_games.git
