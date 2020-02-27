@@ -189,22 +189,22 @@ def get_expert_policy(env_name):
     }[env_name]
 
 def expert_xyz_policy(layout):
-    if np.argwhere(layout == xyz.X):
+    if list(np.argwhere(layout == xyz.X)):
         X_r, X_c = np.argwhere(layout == xyz.X)[0]
     else: X_r, X_c = -1, -1
-    if np.argwhere(layout == xyz.Y):
+    if list(np.argwhere(layout == xyz.Y)):
         Y_r, Y_c = np.argwhere(layout == xyz.Y)[0]
     else: Y_r, Y_c = -1, -1
-    if np.argwhere(layout == xyz.Z):
+    if list(np.argwhere(layout == xyz.Z)):
         Z_r, Z_c = np.argwhere(layout == xyz.Z)[0]
     else: Z_r, Z_c = -1, -1
-    totalXYZ = {'X':(X_r,X_c),'Y':(Y_r,Y_c),'Z':(Z_r,Z_r)}
+    totalXYZ = {'x':(X_r,X_c),'y':(Y_r,Y_c),'z':(Z_r,Z_r)}
 
-    ground_truth = {'X': (1,2),'Y':(1,1),'Z':(1,0)}
+    ground_truth = {'x': (1,2),'y':(1,1),'z':(1,0)}
     for key, val in totalXYZ.items():
         if val == (-1,-1):
-            return ground_truth[key]
-    return (-1,-1)
+            return (key, ground_truth[key])
+    return ('pass', (-1, -1))
     
 
 

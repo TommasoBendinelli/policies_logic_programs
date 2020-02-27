@@ -1,7 +1,7 @@
 from cache_utils import manage_cache
 from dsl import *
 from env_settings import *
-from grammar_utils import generate_programs
+from grammar_utils import generate_programs, generate_programs_test
 from dt_utils import extract_plp_from_dt
 from expert_demonstrations import get_demonstrations
 from policy import StateActionProgram, PLPPolicy
@@ -12,7 +12,7 @@ from functools import partial
 from sklearn.tree import DecisionTreeClassifier
 from scipy.special import logsumexp
 from scipy.sparse import csr_matrix, lil_matrix, vstack
-
+from copy import deepcopy
 import gym
 import multiprocessing
 import numpy as np
@@ -44,7 +44,10 @@ def get_program_set(base_class_name, num_programs):
     object_types = get_object_types(base_class_name)
     grammar = create_grammar(object_types)
 
-    program_generator = generate_programs(grammar)
+    # if base_class_name=="PlayingWithXYZ":
+    #     program_generator = generate_programs_test(grammar)
+
+    program_generator = generate_programs_test(grammar)
     programs = []
     program_prior_log_probs = []
 
@@ -115,6 +118,52 @@ def extract_examples_from_demonstration(demonstration):
 
     return positive_examples, negative_examples
 
+
+class PlayingWithXYZ:
+    object_types = ('pass','x','y','z')    
+    
+    @classmethod
+    def extract_examples_from_demonstration(cls,demonstration):
+        positive_examples = []
+        negative_examples = []
+
+        for demonstration_item in demonstration:
+            demo_positive_examples, demo_negative_examples = cls.extract_examples_from_demonstration_item(demonstration_item)
+            positive_examples.extend(demo_positive_examples)
+            negative_examples.extend(demo_negative_examples)
+
+        return positive_examples, negative_examples
+
+    @classmethod
+    def extract_examples_from_demonstration_item(cls,demonstration_item):
+        state, action = demonstration_item
+
+        positive_examples = [(state, action)]
+        negative_examples = []
+
+        for r in range(state.shape[0]):
+            for c in range(state.shape[1]):
+                for val in cls.object_types:
+                    if (val, (r, c)) == action :
+                        continue
+                    else:
+                        negative_examples.append((state,(val, (r, c))))
+
+        return positive_examples, negative_examples
+
+    @classmethod
+    def retrofit_demonstrations(cls,fn_inputs):
+        acton_inputs = deepcopy(fn_inputs)
+        for idx in range(len(fn_inputs)):
+            fn_inputs[idx] = list(fn_inputs[idx])
+            fn_inputs[idx][1] = fn_inputs[idx][1][1]
+            fn_inputs[idx] = tuple(fn_inputs[idx])
+
+            acton_inputs[idx] = list(acton_inputs[idx])
+            acton_inputs[idx][1] = acton_inputs[idx][1][0]
+            acton_inputs[idx] = tuple(acton_inputs[idx])
+        return fn_inputs, acton_inputs
+    
 def apply_programs(programs, fn_input):
     """
     Worker function that applies a list of programs to a single given input.
@@ -167,9 +216,16 @@ def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo
     print("Running all programs on {}, {}".format(base_class_name, demo_number))
 
     programs, _ = get_program_set(base_class_name, num_programs)
+    
 
-    demonstration = get_demonstrations(base_class_name, demo_numbers=(demo_number,))
-    positive_examples, negative_examples = extract_examples_from_demonstration(demonstration)
+    #Max demo needed because a demostration is considered as well doing nothing. Hence legth is set
+    if base_class_name == "PlayingWithXYZ":
+        demonstration = get_demonstrations(base_class_name, demo_numbers=(demo_number,),  max_demo_length=2)
+        positive_examples, negative_examples  = PlayingWithXYZ.extract_examples_from_demonstration(demonstration)
+    else: 
+        demonstration = get_demonstrations(base_class_name, demo_numbers=(demo_number,))
+        positive_examples, negative_examples = extract_examples_from_demonstration(demonstration)
+    
     y = [1] * len(positive_examples) + [0] * len(negative_examples)
 
     num_data = len(y)
@@ -177,8 +233,21 @@ def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo
 
     X = lil_matrix((num_data, num_programs), dtype=bool)
 
+    fn_inputs = positive_examples + negative_examples
+    l = 0
+    if base_class_name == "PlayingWithXYZ":
+        l = 4 
+        fn_inputs, action_fn_inputs = PlayingWithXYZ.retrofit_demonstrations(fn_inputs)
+        for i in range(l):
+            print('Iteration {} of {}'.format(i, num_programs), end='\r')
+            end = min(i+program_interval, num_programs)
+            fn = partial(apply_programs, [programs[i]])
+            results = map(fn, action_fn_inputs)
+            for X_idx, x in enumerate(results):
+                X[X_idx,i] = x 
+
     # This loop avoids memory issues
-    for i in range(0, num_programs, program_interval):
+    for i in range(l, num_programs, program_interval):
         end = min(i+program_interval, num_programs)
         print('Iteration {} of {}'.format(i, num_programs), end='\r')
 
@@ -186,7 +255,6 @@ def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo
         pool = multiprocessing.Pool(num_workers)
 
         fn = partial(apply_programs, programs[i:end])
-        fn_inputs = positive_examples + negative_examples
         
         results = pool.map(fn, fn_inputs)
         pool.close()
@@ -347,8 +415,8 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
     X, y = run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers)
     plps, plp_priors = learn_plps(X, y, programs, program_prior_log_probs, num_dts=num_dts,
         program_generation_step_size=program_generation_step_size)
-
-    demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers)
+    if base_class_name == "PlayingWithXYZ": demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers, max_demo_length=2)
+    else: demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers)
     likelihoods = compute_likelihood_plps(plps, demonstrations)
 
     particles = []
@@ -392,6 +460,6 @@ def test(policy, base_class_name, test_env_nums=range(11, 20), max_num_steps=50,
     return accuracies
 
 if __name__  == "__main__":
-    policy = train("PlayingWithXYZ", range(3), 2, 31, 5, 25)
+    policy = train("PlayingWithXYZ", range(3), 1, 400, 5, 25)
     test_results = test(policy, "PlayingWithXYZ", range(3, 4), record_videos=False)
     print("Test results:", test_results)
