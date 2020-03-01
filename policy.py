@@ -16,7 +16,7 @@ class StateActionProgram(object):
 
     def __call__(self, *args, **kwargs):
         if self.wrapped is None:
-            self.wrapped = eval('lambda s, a: ' + self.program)
+            self.wrapped = eval('lambda s, loc, a: ' + self.program)
         return self.wrapped(*args, **kwargs)
 
     def __repr__(self):
@@ -73,10 +73,10 @@ class PLPPolicy(object):
         if hashed_obs in self._action_prob_cache:
             return self._action_prob_cache[hashed_obs]
 
-        action_probs = np.zeros(obs.shape, dtype=np.float32)
+        action_probs = np.zeros(obs.shape[0],obs.shape[1],4, dtype=np.float32)
 
         for plp, prob in zip(self.plps, self.probs):
-            for r, c in self.get_plp_suggestions(plp, obs):
+            for r, c, a in self.get_plp_suggestions(plp, obs):
                 action_probs[r, c] += prob
 
         denom = np.sum(action_probs)
@@ -92,7 +92,8 @@ class PLPPolicy(object):
 
         for r in range(obs.shape[0]):
             for c in range(obs.shape[1]):
-                if plp(obs, (r,c)):
-                    suggestions.append((r, c))
+                for a in ('xyz.EMPTY','xyz.PASS','xyz.X','xyz.Y','xyz.Z'):
+                    if plp(obs, (r,c), a):
+                        suggestions.append((r, c), a)
 
         return suggestions
