@@ -136,33 +136,34 @@ class PlayingWithXYZ:
 
     @classmethod
     def extract_examples_from_demonstration_item(cls,demonstration_item):
-        state, action = demonstration_item
+        state, loc_and_action = demonstration_item
+        a, loc = loc_and_action
 
-        positive_examples = [(state, action)]
+        positive_examples = [(state, loc, a)]
         negative_examples = []
 
         for r in range(state.shape[0]):
             for c in range(state.shape[1]):
                 for val in cls.object_types:
-                    if (val, (r, c)) == action :
+                    if val == a and (r, c) == loc:
                         continue
                     else:
-                        negative_examples.append((state,(val, (r, c))))
+                        negative_examples.append((state, (r, c), val))
 
         return positive_examples, negative_examples
 
-    @classmethod
-    def retrofit_demonstrations(cls,fn_inputs):
-        acton_inputs = deepcopy(fn_inputs)
-        for idx in range(len(fn_inputs)):
-            fn_inputs[idx] = list(fn_inputs[idx])
-            fn_inputs[idx][1] = fn_inputs[idx][1][1]
-            fn_inputs[idx] = tuple(fn_inputs[idx])
+    # @classmethod
+    # def retrofit_demonstrations(cls,fn_inputs):
+    #     acton_inputs = deepcopy(fn_inputs)
+    #     for idx in range(len(fn_inputs)):
+    #         fn_inputs[idx] = list(fn_inputs[idx])
+    #         fn_inputs[idx][1] = fn_inputs[idx][1][1]
+    #         fn_inputs[idx] = tuple(fn_inputs[idx])
 
-            acton_inputs[idx] = list(acton_inputs[idx])
-            acton_inputs[idx][1] = acton_inputs[idx][1][0]
-            acton_inputs[idx] = tuple(acton_inputs[idx])
-        return fn_inputs, acton_inputs
+    #         acton_inputs[idx] = list(acton_inputs[idx])
+    #         acton_inputs[idx][1] = acton_inputs[idx][1][0]
+    #         acton_inputs[idx] = tuple(acton_inputs[idx])
+    #     return fn_inputs, acton_inputs
     
 def apply_programs(programs, fn_input):
     """
@@ -180,14 +181,20 @@ def apply_programs(programs, fn_input):
     """
     x = []
     for program in programs:
-        x_i = program(*fn_input)
+        try:
+            x_i = program(*fn_input)
+        except: 
+            print(program)
+            print(fn_input)
+            x_i = program(*fn_input)
+            exit()
         x.append(x_i)
     return x
 
 @manage_cache(cache_dir, ['.npz', '.pkl'])
 def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number, program_interval=1000):
     """
-    Run all programs up to some iteration on one demonstration.
+    un all programs up to some iteration on one demonstration.
 
     Expensive in general because programs can be slow and numerous, so caching can be very helpful.
 
@@ -235,16 +242,16 @@ def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo
 
     fn_inputs = positive_examples + negative_examples
     l = 0
-    if base_class_name == "PlayingWithXYZ":
-        l = 4 
-        fn_inputs, action_fn_inputs = PlayingWithXYZ.retrofit_demonstrations(fn_inputs)
-        for i in range(l):
-            print('Iteration {} of {}'.format(i, num_programs), end='\r')
-            end = min(i+program_interval, num_programs)
-            fn = partial(apply_programs, [programs[i]])
-            results = map(fn, action_fn_inputs)
-            for X_idx, x in enumerate(results):
-                X[X_idx,i] = x 
+    # if base_class_name == "PlayingWithXYZ":
+    #     l = 4 
+    #     # fn_inputs, action_fn_inputs = PlayingWithXYZ.retrofit_demonstrations(fn_inputs)
+    #     for i in range(l):
+    #         print('Iteration {} of {}'.format(i, num_programs), end='\r')
+    #         end = min(i+program_interval, num_programs)
+    #         fn = partial(apply_programs, [programs[i]])
+    #         results = map(fn, action_fn_inputs)
+    #         for X_idx, x in enumerate(results):
+    #             X[X_idx,i] = x 
 
     # This loop avoids memory issues
     for i in range(l, num_programs, program_interval):
@@ -353,19 +360,24 @@ def compute_likelihood_single_plp(demonstrations, plp):
         The log likelihood.
     """
     ll = 0.
+    # state, loc_and_action = demonstration_item
+    # a, loc = action_and_loc
 
-    for obs, action in demonstrations:
+    # positive_examples = [(state, loc, a)]
+    # negative_examples = []
 
-        if not plp(obs, action):
+    for obs, action_and_loc in demonstrations:
+        a, loc = action_and_loc
+        if not plp(obs, loc, a):
             return -np.inf
 
         size = 1
 
         for r in range(obs.shape[0]):
             for c in range(obs.shape[1]):
-                if (r, c) == action:
+                if (r, c) == loc:
                     continue
-                if plp(obs, (r, c)):
+                if plp(obs, (r, c), a):
                     size += 1
 
         ll += np.log(1. / size)
