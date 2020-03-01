@@ -31,10 +31,10 @@ def at_cell_with_value(value, local_program, obs):
 def at_action_cell(local_program, cell, obs):
     return local_program(cell, obs)
 
-def is_action(action, value):
+def is_action(state, loc, action, value):
     if action == value:
         return True
-    else: False
+    else: return False
 
 
 def scanning(direction, true_condition, false_condition, cell, obs, max_timeout=50):
@@ -64,7 +64,7 @@ START, CONDITION, LOCAL_PROGRAM, DIRECTION, POSITIVE_NUM, NEGATIVE_NUM, VALUE = 
 def create_grammar(object_types):
     grammar = {
         START : ([['at_cell_with_value(', VALUE, ',', LOCAL_PROGRAM, ', s)'],
-                  ['at_action_cell(', LOCAL_PROGRAM, ', a, s)']],
+                  ['at_action_cell(', LOCAL_PROGRAM, ', loc, s)']],
                   [0.5, 0.5]),
         LOCAL_PROGRAM : ([[CONDITION],
                           ['lambda cell,o : shifted(', DIRECTION, ',', CONDITION, ', cell, o)']],
