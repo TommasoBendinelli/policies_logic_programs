@@ -370,15 +370,21 @@ def compute_likelihood_single_plp(demonstrations, plp):
         a, loc = action_and_loc
         if not plp(obs, loc, a):
             return -np.inf
-
+        
+        if a != "xyz.PASS":
+            import pickle
+            f = open('test.pkl', 'wb')
+            pickle.dump([plp, obs, action_and_loc], f)
+            f.close()
         size = 1
-
         for r in range(obs.shape[0]):
             for c in range(obs.shape[1]):
-                if (r, c) == loc:
-                    continue
-                if plp(obs, (r, c), a):
-                    size += 1
+                for act in ('pass', 'x', 'y','z'):
+                    if (r,c) == loc and act==a:
+                        continue
+                    if plp(obs, (r, c), a):
+                        size += 1
+                    
 
         ll += np.log(1. / size)
 
@@ -430,6 +436,11 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
     if base_class_name == "PlayingWithXYZ": demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers, max_demo_length=2)
     else: demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers)
     likelihoods = compute_likelihood_plps(plps, demonstrations)
+    
+    # import pickle
+    # f = open('plps.pkl', 'wb')
+    # pickle.dump([plps,plp_priors], f)
+    # f.close()
 
     particles = []
     particle_log_probs = []
@@ -437,6 +448,7 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
     for plp, prior, likelihood in zip(plps, plp_priors, likelihoods):
         particles.append(plp)
         particle_log_probs.append(prior + likelihood)
+
 
     print("\nDone!")
     map_idx = np.argmax(particle_log_probs).squeeze()
@@ -456,7 +468,7 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
     return policy
 
 ## Test (given subset of environments)
-def test(policy, base_class_name, test_env_nums=range(11, 20), max_num_steps=50,
+def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=3,
          record_videos=True, video_format='mp4'):
     
     env_names = ['{}{}-v0'.format(base_class_name, i) for i in test_env_nums]
@@ -466,12 +478,12 @@ def test(policy, base_class_name, test_env_nums=range(11, 20), max_num_steps=50,
     for env in envs:
         video_out_path = '/tmp/lfd_{}.{}'.format(env.__class__.__name__, video_format)
         result = run_single_episode(env, policy, max_num_steps=max_num_steps, 
-            record_video=record_videos, video_out_path=video_out_path) > 0
+            record_video=record_videos, video_out_path=video_out_path)
         accuracies.append(result)
 
     return accuracies
 
 if __name__  == "__main__":
-    policy = train("PlayingWithXYZ", range(3), 1, 400, 5, 25)
-    test_results = test(policy, "PlayingWithXYZ", range(3, 4), record_videos=False)
+    policy = train("PlayingWithXYZ", range(0,3), 1, 500, 5, 25)
+    test_results = test(policy, "PlayingWithXYZ", range(0,4), record_videos=False)
     print("Test results:", test_results)

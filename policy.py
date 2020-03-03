@@ -2,6 +2,11 @@ from dsl import *
 from env_settings import *
 
 import numpy as np
+import pickle 
+
+
+# with open('plps.pkl', 'rb') as f: 
+#     plps,plp_priors = pickle.load(f)
 
 
 class StateActionProgram(object):
@@ -15,8 +20,8 @@ class StateActionProgram(object):
         self.wrapped = None
 
     def __call__(self, *args, **kwargs):
-        if self.wrapped is None:
-            self.wrapped = eval('lambda s, loc, a: ' + self.program)
+        # if self.wrapped is None:
+        self.wrapped = eval('lambda s, loc, a: ' + self.program)
         return self.wrapped(*args, **kwargs)
 
     def __repr__(self):
@@ -47,6 +52,10 @@ class StateActionProgram(object):
         raise Exception()
 
 class PLPPolicy(object):
+    #Debug
+    # with open("test.pkl", "rb") as f:
+    #      plp_t, obs_t, action_and_loc_t = pickle.load(f)
+
     def __init__(self, plps, probs, seed=0, map_choices=True):
         assert abs(np.sum(probs) - 1.) < 1e-5
 
@@ -58,30 +67,38 @@ class PLPPolicy(object):
         self._action_prob_cache = {}
 
     def __call__(self, obs):
+        #No policy found
+        if isinstance(self.get_action_probs(obs), int) and self.get_action_probs(obs) == -1: 
+            return -1 
         action_probs = self.get_action_probs(obs).flatten()
         if self.map_choices:
             idx = np.argmax(action_probs).squeeze()
         else:
             idx = self.rng.choice(len(action_probs), p=action_probs)
-        return np.unravel_index(idx, obs.shape)
+        return np.unravel_index(idx, obs.shape + (4,))
 
     def hash_obs(self, obs):
         return tuple(tuple(l) for l in obs)
+    
+    def action_conv(self,a):
+        b = {'pass':0, 'x':1, 'y':2,'z':3}
+        return b[a]
 
     def get_action_probs(self, obs):
         hashed_obs = self.hash_obs(obs)
         if hashed_obs in self._action_prob_cache:
             return self._action_prob_cache[hashed_obs]
 
-        action_probs = np.zeros(obs.shape[0],obs.shape[1],4, dtype=np.float32)
+        action_probs = np.zeros((obs.shape + (4,)), dtype=np.float32)
 
         for plp, prob in zip(self.plps, self.probs):
             for r, c, a in self.get_plp_suggestions(plp, obs):
-                action_probs[r, c] += prob
+                a = self.action_conv(a)
+                action_probs[r, c, a] += prob
 
         denom = np.sum(action_probs)
         if denom == 0.:
-            action_probs += 1./(action_probs.shape[0] * action_probs.shape[1])
+            action_probs = -1  # 1./(action_probs.shape[0] * action_probs.shape[1] * action_probs.shape[2])
         else:
             action_probs = action_probs / denom
         self._action_prob_cache[hashed_obs] = action_probs
@@ -92,8 +109,8 @@ class PLPPolicy(object):
 
         for r in range(obs.shape[0]):
             for c in range(obs.shape[1]):
-                for a in ('xyz.EMPTY','xyz.PASS','xyz.X','xyz.Y','xyz.Z'):
-                    if plp(obs, (r,c), a):
-                        suggestions.append((r, c), a)
+                for a in xyz.ALL_ACTION_TOKENS: #('xyz.PASS','xyz.X','xyz.Y','xyz.Z'):
+                        if plp(obs, (r,c), a):
+                            suggestions.append((r, c, a))
 
         return suggestions
