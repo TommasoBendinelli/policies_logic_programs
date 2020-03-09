@@ -3,7 +3,7 @@ from dsl import *
 from env_settings import *
 from grammar_utils import generate_programs, generate_programs_test
 from dt_utils import extract_plp_from_dt
-from expert_demonstrations import get_demonstrations
+from expert_demonstrations import get_demonstrations, get_interactive_demo
 from policy import StateActionProgram, PLPPolicy
 from utils import run_single_episode
 
@@ -192,7 +192,7 @@ def apply_programs(programs, fn_input):
     return x
 
 @manage_cache(cache_dir, ['.npz', '.pkl'])
-def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number, program_interval=1000):
+def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number, program_interval=1000, interactive=False):
     """
     un all programs up to some iteration on one demonstration.
 
@@ -227,7 +227,7 @@ def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo
 
     #Max demo needed because a demostration is considered as well doing nothing. Hence legth is set
     if base_class_name == "PlayingWithXYZ":
-        demonstration = get_demonstrations(base_class_name, demo_numbers=(demo_number,),  max_demo_length=2)
+        demonstration = get_demonstrations(base_class_name, demo_numbers=(demo_number,),  max_demo_length=1, interactive=interactive)
         positive_examples, negative_examples  = PlayingWithXYZ.extract_examples_from_demonstration(demonstration)
     else: 
         demonstration = get_demonstrations(base_class_name, demo_numbers=(demo_number,))
@@ -274,14 +274,14 @@ def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo
     print()
     return X, y
 
-def run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers):
+def run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers, interactive=False):
     """
     See run_all_programs_on_single_demonstration.
     """
     X, y = None, None
 
     for demo_number in demo_numbers:
-        demo_X, demo_y = run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number)
+        demo_X, demo_y = run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number, interactive=interactive)
 
         if X is None:
             X = demo_X
@@ -343,7 +343,8 @@ def learn_plps(X, y, programs, program_prior_log_probs, num_dts=5, program_gener
             plp, plp_prior_log_prob = extract_plp_from_dt(clf, programs, program_prior_log_probs)
             plps.append(plp)
             plp_priors.append(plp_prior_log_prob)
-
+        
+    print("Learn all probabilities!")
     return plps, plp_priors
 
 def compute_likelihood_single_plp(demonstrations, plp):
@@ -371,11 +372,11 @@ def compute_likelihood_single_plp(demonstrations, plp):
         if not plp(obs, loc, a):
             return -np.inf
         
-        if a != "xyz.PASS":
-            import pickle
-            f = open('test.pkl', 'wb')
-            pickle.dump([plp, obs, action_and_loc], f)
-            f.close()
+        # if a != "xyz.PASS":
+        #     import pickle
+        #     f = open('test.pkl', 'wb')
+        #     pickle.dump([plp, obs, action_and_loc], f)
+        #     f.close()
         size = 1
         for r in range(obs.shape[0]):
             for c in range(obs.shape[1]):
@@ -427,16 +428,17 @@ def select_particles(particles, particle_log_probs, max_num_particles):
     return sorted_particles[:end], sorted_log_probs[:end]
 
 @manage_cache(cache_dir, '.pkl')
-def train(base_class_name, demo_numbers, program_generation_step_size, num_programs, num_dts, max_num_particles):
+def train(base_class_name, demo_numbers, program_generation_step_size, num_programs, num_dts, max_num_particles, interactive=False):
     programs, program_prior_log_probs = get_program_set(base_class_name, num_programs)
 
-    X, y = run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers)
+    X, y = run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers, interactive)
     plps, plp_priors = learn_plps(X, y, programs, program_prior_log_probs, num_dts=num_dts,
         program_generation_step_size=program_generation_step_size)
-    if base_class_name == "PlayingWithXYZ": demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers, max_demo_length=2)
+    if base_class_name == "PlayingWithXYZ": demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers, max_demo_length=2,interactive=interactive)
     else: demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers)
+    print("Starting to compute the likelihood")
     likelihoods = compute_likelihood_plps(plps, demonstrations)
-    
+    print("Likelihood calculation completed")
     # import pickle
     # f = open('plps.pkl', 'wb')
     # pickle.dump([plps,plp_priors], f)
@@ -479,11 +481,12 @@ def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=3,
         video_out_path = '/tmp/lfd_{}.{}'.format(env.__class__.__name__, video_format)
         result = run_single_episode(env, policy, max_num_steps=max_num_steps, 
             record_video=record_videos, video_out_path=video_out_path)
-        accuracies.append(result)
+        accuracies.append(result['accuracies'])
+
 
     return accuracies
 
 if __name__  == "__main__":
-    policy = train("PlayingWithXYZ", range(0,3), 1, 500, 5, 25)
+    policy = train("PlayingWithXYZ", range(0,3), 1, 500, 5, 25, interactive=True )
     test_results = test(policy, "PlayingWithXYZ", range(0,4), record_videos=False)
     print("Test results:", test_results)

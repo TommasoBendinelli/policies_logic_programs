@@ -1,19 +1,35 @@
 from env_settings import *
 from utils import run_single_episode
-
+from generalization_grid_games.envs import playing_with_XYZ
 import gym
 import os
-
 import numpy as np
 import matplotlib
+import matplotlib.pyplot as plt
+from interactiveLearning import InteractiveLearning
+from globals_var import action, action_done
 matplotlib.use('TkAgg')
 
+# def save_interactive_demos():
+#     if demonstrations != None:
+#         return demonstrations
 
+def get_interactive_demo(base_name, env_num):
+    if get_interactive_demo.demonstrations == None:
+        demonstrations = []
+        
+        env = gym.make('{}{}-v0'.format(base_name, env_num),interactive=True)
+        print("Opening Demo")
+        demonstrations = [(layout, actions) for actions, layout in  zip(env.action, env.layout_demo) ]
+        if not demonstrations:
+            print("No action performed! Not useful demonstrations")
+        return demonstrations
 
 def get_demo(base_name, expert_policy, env_num, max_demo_length=np.inf):
     demonstrations = []
-
+    
     env = gym.make('{}{}-v0'.format(base_name, env_num))
+    print("Demo recorded")
     layout = env.reset()
 
     t = 0
@@ -26,7 +42,6 @@ def get_demo(base_name, expert_policy, env_num, max_demo_length=np.inf):
             if not reward > 0:
                 print("WARNING: demo did not succeed!")
             break
-
     return demonstrations
 
 def expert_nim_policy(layout):
@@ -188,7 +203,11 @@ def get_expert_policy(env_name):
         'PlayingWithXYZ': expert_xyz_policy
     }[env_name]
 
-def expert_xyz_policy(layout):
+def expert_xyz_policy(layout, interactive = False):
+    if interactive:
+        xyz.PlayingWithXYZGymEnv0(interactive=interactive)
+        return 
+
     if list(np.argwhere(layout == xyz.X)):
         X_r, X_c = np.argwhere(layout == xyz.X)[0]
     else: X_r, X_c = -1, -1
@@ -200,11 +219,11 @@ def expert_xyz_policy(layout):
     else: Z_r, Z_c = -1, -1
     totalXYZ = {'x':(X_r,X_c),'y':(Y_r,Y_c),'z':(Z_r,Z_r)}
 
-    ground_truth = {'x': (1,2),'y':(1,1),'z':(1,0)}
+    ground_truth = {'x': (1,1),'y':(2,1),'z':(3,1)}
     for key, val in totalXYZ.items():
         if val == (-1,-1):
             return (key, ground_truth[key])
-    return ('pass', (-1, -1))
+    return ('pass', (0, 0))
     
 
 
@@ -214,14 +233,22 @@ def expert_xyz_policy(layout):
     left_arrow = tuple(np.argwhere(layout == rfts.LEFT_ARROW)[0])
 
 
-
-def get_demonstrations(env_name, demo_numbers=(1, 2, 3, 4), max_demo_length=np.inf):
+def get_demonstrations(env_name, demo_numbers=(1, 2, 3, 4), max_demo_length=np.inf, interactive=False):
     expert_policy = get_expert_policy(env_name)
     demonstrations = []
 
     for i in demo_numbers:
-        demonstrations += get_demo(env_name, expert_policy, i, max_demo_length=max_demo_length)
-
+        if interactive == True:
+            if get_demonstrations.second_visit == 0:
+                demonstrations += get_interactive_demo(env_name, i)
+                get_interactive_demo.demonstrations = demonstrations
+            else:
+                demonstrations = get_interactive_demo.demonstrations
+            
+        else:
+            demonstrations += get_demo(env_name, expert_policy, i, max_demo_length=max_demo_length)
+    
+    get_demonstrations.second_visit = 1
     return [(np.array(l, dtype=object), a) for (l, a) in demonstrations]
 
 def record_expert_demo(env_name, expert_policy, i, outdir, record_video=True):

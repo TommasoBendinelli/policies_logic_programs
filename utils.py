@@ -1,4 +1,5 @@
 def run_single_episode(env, policy, record_video=False, video_out_path=None, max_num_steps=100):
+    res = {}
     if record_video:
         env.start_recording_video(video_out_path=video_out_path)
 
@@ -9,7 +10,9 @@ def run_single_episode(env, policy, record_video=False, video_out_path=None, max
         action = policy(obs)
         if isinstance(action,int) and action == -1:
             print("Teach me this please: \n {}".format(obs))
-            return None 
+            res['Unkown Observation'] = obs
+            res['accuracy'] = None
+            return res
         b = {0:'pass', 1:'x', 2:'y', 3:'z'}
         action = (b[action[2]],  (action[0], action[1]))
 
@@ -22,5 +25,6 @@ def run_single_episode(env, policy, record_video=False, video_out_path=None, max
             break
 
     env.close()
+    res['accuracy'] = total_reward > 0
 
-    return total_reward > 0
+    return res
