@@ -22,9 +22,9 @@ import matplotlib
 matplotlib.use('TkAgg')
 
 cache_dir = 'cache'
+useCache = False
 
-
-@manage_cache(cache_dir, ['.pkl', '.pkl'])
+@manage_cache(cache_dir, ['.pkl', '.pkl'], enabled = True)
 def get_program_set(base_class_name, num_programs):
     """
     Enumerate all programs up to a certain iteration.
@@ -191,7 +191,7 @@ def apply_programs(programs, fn_input):
         x.append(x_i)
     return x
 
-@manage_cache(cache_dir, ['.npz', '.pkl'])
+@manage_cache(cache_dir, ['.npz', '.pkl'], enabled = useCache)
 def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number, program_interval=1000, interactive=False):
     """
     un all programs up to some iteration on one demonstration.
@@ -344,7 +344,7 @@ def learn_plps(X, y, programs, program_prior_log_probs, num_dts=5, program_gener
             plps.append(plp)
             plp_priors.append(plp_prior_log_prob)
         
-    print("Learn all probabilities!")
+    print("Leart all probabilities!")
     return plps, plp_priors
 
 def compute_likelihood_single_plp(demonstrations, plp):
@@ -427,7 +427,7 @@ def select_particles(particles, particle_log_probs, max_num_particles):
         pass
     return sorted_particles[:end], sorted_log_probs[:end]
 
-@manage_cache(cache_dir, '.pkl')
+@manage_cache(cache_dir, '.pkl', enabled = useCache)
 def train(base_class_name, demo_numbers, program_generation_step_size, num_programs, num_dts, max_num_particles, interactive=False):
     programs, program_prior_log_probs = get_program_set(base_class_name, num_programs)
 
@@ -471,22 +471,38 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
 
 ## Test (given subset of environments)
 def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=3,
-         record_videos=True, video_format='mp4'):
+         record_videos=True, video_format='mp4', interactive = True):
     
     env_names = ['{}{}-v0'.format(base_class_name, i) for i in test_env_nums]
     envs = [gym.make(env_name) for env_name in env_names]
     accuracies = []
     
     for env in envs:
-        video_out_path = '/tmp/lfd_{}.{}'.format(env.__class__.__name__, video_format)
+        video_out_path = 'video/lfd_{}.{}'.format(env.__class__.__name__, video_format)
         result = run_single_episode(env, policy, max_num_steps=max_num_steps, 
             record_video=record_videos, video_out_path=video_out_path)
-        accuracies.append(result['accuracies'])
+
+        accuracies.append(result['accuracy'])
 
 
     return accuracies
 
+# def interactive_learning(policy, base_class_name, test_env_nums=range(4), max_num_steps=3):
+    
+#     env_names = ['{}{}-v0'.format(base_class_name, i) for i in test_env_nums]
+#     envs = [gym.make(env_name) for env_name in env_names]
+#     accuracies = []
+    
+#     for env in envs:
+#         result = run_single_episode(env, policy, max_num_steps=max_num_steps, 
+#             record_video=record_videos, video_out_path=video_out_path)
+#         if result['accuracy'] == None and res['Unkown Observation']:
+#             train("PlayingWithXYZ", range(0,3) + env, 1, 500, 5, 25, interactive=True )
+#         accuracies.append(result['accuracy'])
+
+
 if __name__  == "__main__":
-    policy = train("PlayingWithXYZ", range(0,3), 1, 500, 5, 25, interactive=True )
-    test_results = test(policy, "PlayingWithXYZ", range(0,4), record_videos=False)
-    print("Test results:", test_results)
+    policy = train("PlayingWithXYZ", range(0,3), 31, 500, 20, 25, interactive=True )
+    #policy = interactive_learning()
+    test_results = test(policy, "PlayingWithXYZ", range(3,5), record_videos=True, interactive = True)
+    #print("Test results:", test_results)

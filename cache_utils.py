@@ -4,6 +4,25 @@ import glob
 import pickle
 import os
 
+def demonstration_saver(func):
+    def wrapper(*args,**argv):
+        if not os.path.isfile("demonstration_stored.obj"):
+            ret = func(*args,**argv)
+            with open('demonstration_stored.obj', "wb") as fp:
+                pickle.dump({args:ret},fp)
+            return ret
+        else: 
+            with open('demonstration_stored.obj', "rb") as fp:
+                 demo_guidance = pickle.load(fp)
+            if args in demo_guidance:
+                return demo_guidance[args]
+            else: 
+                ret = func(*args,**argv)
+                demo_guidance[args] = ret
+                with open('demonstration_stored.obj', "wb") as fp:
+                    pickle.dump(demo_guidance,fp)
+                return ret
+    return wrapper
 
 def cache_single_output(output, cache_file):
     if isinstance(output, csr_matrix):
@@ -23,7 +42,7 @@ def load_single_cache_output(cache_file):
     print("Loaded cache from {}.".format(cache_file))
     return output
 
-def manage_cache(cache_dir, extensions):
+def manage_cache(cache_dir, extensions, enabled = True):
 
     if not os.path.exists(cache_dir):
         os.makedirs(cache_dir)
@@ -36,30 +55,36 @@ def manage_cache(cache_dir, extensions):
 
     def decorator_manage_cache(func):
         def wrapper_cache_output(*args, **kwargs):
-            run_id = "-".join([str(arg) for arg in args])
+            if enabled == True:
+                run_id = "-".join([str(arg) for arg in args])
 
-            cache_file = os.path.join(cache_dir, "{}_{}_{}{}".format(func.__name__, run_id, 0, extensions[0]))
+                cache_file = os.path.join(cache_dir, "{}_{}_{}{}".format(func.__name__, run_id, 0, extensions[0]))
 
-            if not os.path.isfile(cache_file):
-                outputs = func(*args, **kwargs)
-                if single_output:
-                    outputs = [outputs]
+                if not os.path.isfile(cache_file):
+                    outputs = func(*args, **kwargs)
+                    if single_output:
+                        outputs = [outputs]
 
-                for i, (output, extension) in enumerate(zip(outputs, extensions)):
+                    for i, (output, extension) in enumerate(zip(outputs, extensions)):
+                        cache_file = os.path.join(cache_dir, "{}_{}_{}{}".format(func.__name__, run_id, i, extension))
+                        cache_single_output(output, cache_file)
+
+                num_cache_files = len(glob.glob(cache_dir + "/{}_{}_*.".format(func.__name__, run_id)))
+
+                outputs = []
+                for i, extension in enumerate(extensions):
                     cache_file = os.path.join(cache_dir, "{}_{}_{}{}".format(func.__name__, run_id, i, extension))
-                    cache_single_output(output, cache_file)
+                    output = load_single_cache_output(cache_file)
+                    outputs.append(output)
 
-            num_cache_files = len(glob.glob(cache_dir + "/{}_{}_*.".format(func.__name__, run_id)))
-
-            outputs = []
-            for i, extension in enumerate(extensions):
-                cache_file = os.path.join(cache_dir, "{}_{}_{}{}".format(func.__name__, run_id, i, extension))
-                output = load_single_cache_output(cache_file)
-                outputs.append(output)
-
-            if single_output:
-                return outputs[0]
-            return tuple(outputs)
+                if single_output:
+                    return outputs[0]
+                return tuple(outputs)
+                
+            else: 
+                if single_output:
+                    return func(*args, **kwargs)
+                return tuple(func(*args, **kwargs))
 
         return wrapper_cache_output
     return decorator_manage_cache

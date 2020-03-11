@@ -20,7 +20,7 @@ def get_object_types(base_class_name):
     if base_class_name == 'ReachForTheStar':
         return ('rfts.EMPTY', 'rfts.AGENT', 'rfts.STAR', 'rfts.DRAWN', 'rfts.LEFT_ARROW', 'rfts.RIGHT_ARROW', 'None')
     if base_class_name == 'PlayingWithXYZ':
-        return ('xyz.EMPTY','xyz.PASS','xyz.X','xyz.Y','xyz.Z')
+        return ('xyz.EMPTY','xyz.PASS','xyz.X','xyz.Y','xyz.Z','xyz.START')
 
 
     raise Exception("Unknown class name", base_class_name)
