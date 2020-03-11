@@ -5,6 +5,24 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Interactive Playing",
+            "type": "python",
+            "request": "launch",
+            "subProcess": true,
+            "program": "${workspaceFolder}/generalization_grid_games/demos/playing_with_XYZ.py",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Understanding Tree",
+            "type": "python",
+            "request": "launch",
+            "subProcess": true,
+            "program": "${workspaceFolder}/understandingTree.py",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
             "name": "Debug Pipeline",
             "type": "python",
             "request": "launch",
