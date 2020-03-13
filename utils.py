@@ -20,7 +20,7 @@ def run_single_episode(env, policy, record_video=False, video_out_path=None, max
             res['accuracy'] = None
             env.close()
             return res
-        b = {0:'pass', 1:'x', 2:'y', 3:'z'}
+        b = {0:'pass', 1:'x', 2:'y', 3:'z', 4:'empty'}
         action = (b[action[2]],  (action[0], action[1]))
 
         new_obs, reward, done, debug_info = env.step(action)

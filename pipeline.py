@@ -6,6 +6,7 @@ from dt_utils import extract_plp_from_dt
 from expert_demonstrations import get_demonstrations, get_interactive_demo
 from policy import StateActionProgram, PLPPolicy
 from utils import run_single_episode
+from generalization_grid_games.envs import playing_with_XYZ
 
 from collections import defaultdict
 from functools import partial
@@ -120,7 +121,7 @@ def extract_examples_from_demonstration(demonstration):
 
 
 class PlayingWithXYZ:
-    object_types = ('pass','x','y','z')    
+    object_types = playing_with_XYZ.ALL_ACTION_TOKENS   
     
     @classmethod
     def extract_examples_from_demonstration(cls,demonstration):
@@ -380,7 +381,7 @@ def compute_likelihood_single_plp(demonstrations, plp):
         size = 1
         for r in range(obs.shape[0]):
             for c in range(obs.shape[1]):
-                for act in ('pass', 'x', 'y','z'):
+                for act in playing_with_XYZ.ALL_ACTION_TOKENS:
                     if (r,c) == loc and act==a:
                         continue
                     if plp(obs, (r, c), a):

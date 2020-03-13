@@ -81,7 +81,7 @@ class PLPPolicy(object):
         return tuple(tuple(l) for l in obs)
     
     def action_conv(self,a):
-        b = {'pass':0, 'x':1, 'y':2,'z':3}
+        b = {'pass':0, 'x':1, 'y':2,'z':3, 'empty':4}
         return b[a]
 
     def get_action_probs(self, obs):
