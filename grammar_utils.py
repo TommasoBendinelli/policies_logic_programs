@@ -81,9 +81,9 @@ def generate_programs_test(grammar, start_symbol=0, num_iterations=100000000):
 
     hq.heappush(queue, (0, 0, next(counter), [start_symbol]))
 
-    retrofitting = ['xyz.X','xyz.Y','xyz.Z','xyz.PASS']
+    retrofitting = ['xyz.X','xyz.Y','xyz.Z','xyz.PASS','xyz.EMPTY']
     for j in retrofitting:
-        yield StateActionProgram(stringify("is_action(s, loc, a, {})".format(j))), np.log(0.333333)
+        yield StateActionProgram(stringify("is_action(s, loc, a, {})".format(j))), np.log(0.25)
     
     for iteration in range(num_iterations):
         priority, production_neg_log_prob, _, program = hq.heappop(queue)

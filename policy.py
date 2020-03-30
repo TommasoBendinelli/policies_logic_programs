@@ -75,7 +75,7 @@ class PLPPolicy(object):
             idx = np.argmax(action_probs).squeeze()
         else:
             idx = self.rng.choice(len(action_probs), p=action_probs)
-        return np.unravel_index(idx, obs.shape + (4,))
+        return np.unravel_index(idx, obs.shape + (len(xyz.ALL_ACTION_TOKENS),))
 
     def hash_obs(self, obs):
         return tuple(tuple(l) for l in obs)
@@ -89,7 +89,7 @@ class PLPPolicy(object):
         if hashed_obs in self._action_prob_cache:
             return self._action_prob_cache[hashed_obs]
 
-        action_probs = np.zeros((obs.shape + (4,)), dtype=np.float32)
+        action_probs = np.zeros((obs.shape + (len(xyz.ALL_ACTION_TOKENS),)), dtype=np.float32)
 
         for plp, prob in zip(self.plps, self.probs):
             for r, c, a in self.get_plp_suggestions(plp, obs):
