@@ -6,7 +6,7 @@ import os
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-from interactiveLearning import InteractiveLearning
+# from interactiveLearning import InteractiveLearning
 from cache_utils import demonstration_saver
 #from globals_var import action, action_done
 matplotlib.use('TkAgg')
