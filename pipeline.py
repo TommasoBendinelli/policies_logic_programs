@@ -392,6 +392,6 @@ def test(policy, base_class_name, test_env_nums=range(11, 20), max_num_steps=50,
     return accuracies
 
 if __name__  == "__main__":
-    policy = train("CheckmateTactic", range(11), 1, 10, 100, 25)
-    test_results = test(policy, "CheckmateTactic", range(11, 20), record_videos=True)
+    policy = train("TwoPileNim", range(11), 1, 31, 100, 25)
+    test_results = test(policy, "TwoPileNim", range(11, 20), record_videos=True)
     print("Test results:", test_results)
