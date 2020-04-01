@@ -63,6 +63,8 @@ def extract_plp_from_dt(estimator, features, feature_log_probs):
     parents = {0 : None}
     true_leaves = []
 
+    total_pos_leaf = 0
+    total_neg_leaf = 0
     while len(stack) > 0:
         node_id = stack.pop()
 
@@ -73,8 +75,16 @@ def extract_plp_from_dt(estimator, features, feature_log_probs):
             stack.append(children_right[node_id])
             parents[children_right[node_id]] = (node_id, 'right')
         elif value[node_id][1] > value[node_id][0]:
+            total_pos_leaf = value[node_id][1] + total_pos_leaf
+            total_neg_leaf = value[node_id][0] + total_neg_leaf
             true_leaves.append(node_id)
 
+    print("Sum of total positive leaves {}".format(total_pos_leaf))
+    print("Sum of total negative leaves {}".format(total_neg_leaf))
+    try:
+        print("Likelihood? {}".format(np.log(total_pos_leaf/(total_pos_leaf+total_neg_leaf))))
+    except:
+        print("Likelihood {}".format("Nan"))
     paths_to_true_leaves = [get_path_to_leaf(leaf, parents) for leaf in true_leaves]
 
     conjunctive_programs = []
