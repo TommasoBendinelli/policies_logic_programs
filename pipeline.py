@@ -367,12 +367,23 @@ def compute_likelihood_single_plp(demonstrations, plp):
 
     # positive_examples = [(state, loc, a)]
     # negative_examples = []
-
+    #demon = 1
+    #start = time.time()
     for obs, action_and_loc in demonstrations:
         a, loc = action_and_loc
         if not plp(obs, loc, a):
             return -np.inf
-        
+        #when_false = when_false + 1
+
+    
+    for obs, action_and_loc in demonstrations:
+        #print("Starting analyzing demonstration {}".format(demon))
+        #start = time.time()
+        #demon = demon + 1 
+        # a, loc = action_and_loc
+        # if not plp(obs, loc, a):
+        #     print(when_false)
+        #     return -np.inf
         # if a != "xyz.PASS":
         #     import pickle
         #     f = open('test.pkl', 'wb')
@@ -384,11 +395,12 @@ def compute_likelihood_single_plp(demonstrations, plp):
                 for act in playing_with_XYZ.ALL_ACTION_TOKENS:
                     if (r,c) == loc and act==a:
                         continue
-                    if plp(obs, (r, c), a):
+                    if plp(obs, (r, c), act):
                         size += 1
                     
-
+        #print("Demonstration {} done in {}".format(demon, time.time() - start))
         ll += np.log(1. / size)
+        #when_false = when_false + 1
 
     return ll
 
@@ -440,6 +452,7 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
     print("Starting to compute the likelihood")
     likelihoods = compute_likelihood_plps(plps, demonstrations)
     print("Likelihood calculation completed")
+    print("Results of likelihood: {}".format(likelihoods))
     # import pickle
     # f = open('plps.pkl', 'wb')
     # pickle.dump([plps,plp_priors], f)
@@ -503,7 +516,7 @@ def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=3,
 
 
 if __name__  == "__main__":
-    policy = train("PlayingWithXYZ", range(0,3), 31, 500, 20, 25, interactive=True )
+    policy = train("PlayingWithXYZ", range(0,3), 5, 100, 5, 25, interactive=True )
     #policy = interactive_learning()
     test_results = test(policy, "PlayingWithXYZ", range(3,5), record_videos=True, interactive = True)
     #print("Test results:", test_results)
