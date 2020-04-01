@@ -380,7 +380,7 @@ def compute_likelihood_single_plp(demonstrations, plp):
         #print("Starting analyzing demonstration {}".format(demon))
         #start = time.time()
         #demon = demon + 1 
-        # a, loc = action_and_loc
+        a, loc = action_and_loc
         # if not plp(obs, loc, a):
         #     print(when_false)
         #     return -np.inf
