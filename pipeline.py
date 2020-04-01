@@ -351,7 +351,7 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
 
     demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers)
     likelihoods = compute_likelihood_plps(plps, demonstrations)
-
+    print("Likelihood: {}".format(likelihoods))
     particles = []
     particle_log_probs = []
 
