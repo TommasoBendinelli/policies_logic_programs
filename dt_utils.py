@@ -83,6 +83,7 @@ def extract_plp_from_dt(estimator, features, feature_log_probs):
     print("Sum of total negative leaves {}".format(total_neg_leaf))
     try:
         print("Likelihood? {}".format(np.log(total_pos_leaf/(total_pos_leaf+total_neg_leaf))))
+        likelihood = np.log(total_pos_leaf/(total_pos_leaf+total_neg_leaf))
     except:
         print("Likelihood {}".format("Nan"))
     paths_to_true_leaves = [get_path_to_leaf(leaf, parents) for leaf in true_leaves]
@@ -100,7 +101,7 @@ def extract_plp_from_dt(estimator, features, feature_log_probs):
     if not isinstance(disjunctive_program, StateActionProgram):
         disjunctive_program = StateActionProgram(disjunctive_program)
 
-    return disjunctive_program, program_log_prob
+    return disjunctive_program, program_log_prob, likelihood
 
 
 

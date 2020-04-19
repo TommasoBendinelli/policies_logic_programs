@@ -335,18 +335,20 @@ def learn_plps(X, y, programs, program_prior_log_probs, num_dts=5, program_gener
     """
     plps = []
     plp_priors = []
+    likelihood = []
 
     num_programs = len(programs)
 
     for i in range(0, num_programs, program_generation_step_size):
         print("Learning plps with {} programs".format(i))
         for clf in learn_single_batch_decision_trees(y, num_dts, X[:, :i+1]):
-            plp, plp_prior_log_prob = extract_plp_from_dt(clf, programs, program_prior_log_probs)
+            plp, plp_prior_log_prob, likelihood_prob = extract_plp_from_dt(clf, programs, program_prior_log_probs)
+            likelihood.append(likelihood_prob)
             plps.append(plp)
             plp_priors.append(plp_prior_log_prob)
         
     print("Leart all probabilities!")
-    return plps, plp_priors
+    return plps, plp_priors, likelihood
 
 def compute_likelihood_single_plp(demonstrations, plp):
     """
