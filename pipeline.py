@@ -128,13 +128,36 @@ class PlayingWithXYZ:
         positive_examples = []
         negative_examples = []
 
-        for demonstration_item in demonstration:
-            demo_positive_examples, demo_negative_examples = cls.extract_examples_from_demonstration_item(demonstration_item)
+        for idx, demonstration_item in enumerate(demonstration):
+            demo_positive_examples, demo_negative_examples = cls.extract_examples_from_demonstration_item_TEST(idx,demonstration)
+            #demo_positive_examples, demo_negative_examples = cls.extract_examples_from_demonstration_item(demonstration_item)
             positive_examples.extend(demo_positive_examples)
             negative_examples.extend(demo_negative_examples)
 
         return positive_examples, negative_examples
+        
 
+    @classmethod
+    def extract_examples_from_demonstration_item_TEST(cls,idx,demonstration):
+        state, loc_and_action = demonstration[idx]
+        a, loc = loc_and_action
+
+        positive_examples = [(state, loc, a)]
+        negative_examples = []
+
+        for r in range(state.shape[0]):
+            for c in range(state.shape[1]):
+                for val in cls.object_types:
+                    # if (val, (r,c)) in list(zip(*demonstration))[1]:
+                    #     continue
+                    if val == a and (r,c) in [x[1] for x in list(zip(*demonstration[idx:]))[1] if x[0] == a]: 
+                        #Assume serializable actions
+                        positive_examples.append((state, (r, c), val))
+                        continue
+                    else:
+                        negative_examples.append((state, (r, c), val))
+
+        return positive_examples, negative_examples
     @classmethod
     def extract_examples_from_demonstration_item(cls,demonstration_item):
         state, loc_and_action = demonstration_item
@@ -342,7 +365,7 @@ def learn_plps(X, y, programs, program_prior_log_probs, num_dts=5, program_gener
     for i in range(0, num_programs, program_generation_step_size):
         print("Learning plps with {} programs".format(i))
         for clf in learn_single_batch_decision_trees(y, num_dts, X[:, :i+1]):
-            plp, plp_prior_log_prob, likelihood_prob = extract_plp_from_dt(clf, programs, program_prior_log_probs)
+            plp, plp_prior_log_prob, likelihood_prob = extract_plp_from_dt(clf, programs, program_prior_log_probs, len([seq for seq in y if seq==1]))
             likelihood.append(likelihood_prob)
             plps.append(plp)
             plp_priors.append(plp_prior_log_prob)
@@ -447,14 +470,14 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
     programs, program_prior_log_probs = get_program_set(base_class_name, num_programs)
 
     X, y = run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers, interactive)
-    plps, plp_priors = learn_plps(X, y, programs, program_prior_log_probs, num_dts=num_dts,
+    plps, plp_priors,likelihood = learn_plps(X, y, programs, program_prior_log_probs, num_dts=num_dts,
         program_generation_step_size=program_generation_step_size)
     if base_class_name == "PlayingWithXYZ": demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers, max_demo_length=2,interactive=interactive)
     else: demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers)
-    print("Starting to compute the likelihood")
-    likelihoods = compute_likelihood_plps(plps, demonstrations)
-    print("Likelihood calculation completed")
-    print("Results of likelihood: {}".format(likelihoods))
+    #print("Starting to compute the likelihood")
+    #likelihoods = compute_likelihood_plps(plps, demonstrations)
+    #print("Likelihood calculation completed")
+    #print("Results of likelihood: {}".format(likelihood))
     # import pickle
     # f = open('plps.pkl', 'wb')
     # pickle.dump([plps,plp_priors], f)
@@ -463,9 +486,13 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
     particles = []
     particle_log_probs = []
 
-    for plp, prior, likelihood in zip(plps, plp_priors, likelihoods):
+    for plp, prior, likelihood in zip(plps, plp_priors, likelihood):
+        print("Prior: {}".format(prior))
         particles.append(plp)
-        particle_log_probs.append(prior + likelihood)
+        print("Likelihood: {}".format(likelihood))
+        #particle_log_probs.append(prior + likelihood)
+        particle_log_probs.append(prior + 1000*likelihood)
+        print("Posterior: {}".format(prior + 1000*likelihood))
 
 
     print("\nDone!")
@@ -486,7 +513,7 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
     return policy
 
 ## Test (given subset of environments)
-def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=3,
+def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=15,
          record_videos=True, video_format='mp4', interactive = True):
     
     env_names = ['{}{}-v0'.format(base_class_name, i) for i in test_env_nums]
@@ -518,7 +545,7 @@ def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=3,
 
 
 if __name__  == "__main__":
-    policy = train("PlayingWithXYZ", range(0,3), 5, 100, 5, 25, interactive=True )
+    policy = train("PlayingWithXYZ", range(0,3), 5, 300, 5, 5, interactive=True )
     #policy = interactive_learning()
     test_results = test(policy, "PlayingWithXYZ", range(3,5), record_videos=True, interactive = True)
     #print("Test results:", test_results)

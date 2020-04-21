@@ -51,7 +51,7 @@ def get_disjunctive_program(conjunctive_programs):
 
     return program
 
-def extract_plp_from_dt(estimator, features, feature_log_probs):
+def extract_plp_from_dt(estimator, features, feature_log_probs, num_positive_demo):
     n_nodes = estimator.tree_.node_count
     children_left = estimator.tree_.children_left
     children_right = estimator.tree_.children_right
@@ -74,18 +74,26 @@ def extract_plp_from_dt(estimator, features, feature_log_probs):
             parents[children_left[node_id]] = (node_id, 'left')
             stack.append(children_right[node_id])
             parents[children_right[node_id]] = (node_id, 'right')
-        elif value[node_id][1] > value[node_id][0]:
+        elif value[node_id][1]: #> value[node_id][0]: #  != 0: #
             total_pos_leaf = value[node_id][1] + total_pos_leaf
             total_neg_leaf = value[node_id][0] + total_neg_leaf
             true_leaves.append(node_id)
 
     print("Sum of total positive leaves {}".format(total_pos_leaf))
     print("Sum of total negative leaves {}".format(total_neg_leaf))
-    try:
-        print("Likelihood? {}".format(np.log(total_pos_leaf/(total_pos_leaf+total_neg_leaf))))
-        likelihood = np.log(total_pos_leaf/(total_pos_leaf+total_neg_leaf))
-    except:
+    # try:
+    #     print("Likelihood? {}".format(np.log(total_pos_leaf/(total_pos_leaf+total_neg_leaf))))
+    #     likelihood = np.log(total_pos_leaf/(total_pos_leaf+total_neg_leaf))
+    # except:
+    #     print("Likelihood {}".format("Nan"))
+    #     likelihood = float("-inf")
+
+    if total_pos_leaf != num_positive_demo:
         print("Likelihood {}".format("Nan"))
+        likelihood = float("-inf")
+    else:
+        likelihood = np.log(total_pos_leaf/(total_pos_leaf+total_neg_leaf))
+
     paths_to_true_leaves = [get_path_to_leaf(leaf, parents) for leaf in true_leaves]
 
     conjunctive_programs = []

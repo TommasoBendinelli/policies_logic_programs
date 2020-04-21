@@ -7,6 +7,7 @@ import os
 def demonstration_saver(func):
     def wrapper(*args,**argv):
         if not os.path.isfile("demonstration_stored.obj"):
+            print("Saving demonstration")
             ret = func(*args,**argv)
             with open('demonstration_stored.obj', "wb") as fp:
                 pickle.dump({args:ret},fp)
