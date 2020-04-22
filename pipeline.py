@@ -48,7 +48,7 @@ def get_program_set(base_class_name, num_programs):
     # if base_class_name=="PlayingWithXYZ":
     #     program_generator = generate_programs_test(grammar)
 
-    program_generator = generate_programs_test(grammar)
+    program_generator = generate_programs_test(grammar,base_class_name)
     programs = []
     program_prior_log_probs = []
 
@@ -545,7 +545,7 @@ def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=15,
 
 
 if __name__  == "__main__":
-    policy = train("PlayingWithXYZ", range(0,3), 5, 500, 5, 5, interactive=True )
+    policy = train("TwoPileNim", range(0,3), 5, 500, 5, 5, interactive=True )
     #policy = interactive_learning()
-    test_results = test(policy, "PlayingWithXYZ", range(3,5), record_videos=True, interactive = True)
+    test_results = test(policy, "TwoPileNim", range(3,5), record_videos=True, interactive = True)
     #print("Test results:", test_results)
