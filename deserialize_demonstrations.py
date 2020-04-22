@@ -35,31 +35,52 @@ TOKEN_IMAGES = {
     S_CLicked: plt.imread(get_asset_path('S_highlighted.png'))
 }
 
+
 def demonstration_as_dict_creator(data):
     demonstration = list()
     for time_step in range(len(data)):
+        data[time_step] = converter(data[time_step])
         demonstration.append(data[time_step])
     return demonstration
 
+#Convert "" to None
+def converter(demo):
+    for x in range(len(demo)):
+        for y in range(len(demo[0])):
+            if demo[x][y] == "":
+                demo[x][y] = None
+    return demo
 
 def find_difference(demonstration_seq):
     final_demo = deepcopy(demonstration_seq)
+    action = []
     counter = 0 
     #diff = [key:[[None]*len(demonstration_seq[0][0]) for x in range(len(demonstration_seq[0]))] for key in demonstration_seq.keys()}
     for step in range(1,len(demonstration_seq)):
+        all_equal = 0
         for x in range(len(demonstration_seq[0])):
             for y in range(len(demonstration_seq[0][0])):
                 if (demonstration_seq[step][x][y] == demonstration_seq[step-1][x][y]):
-                    continue
+                    all_equal = all_equal + 1
                 elif demonstration_seq[step-1][x][y] == P:
                     final_demo.insert(step+counter,deepcopy(final_demo[step-1+counter]))
                     final_demo[step+counter][x][y] =  "P_highlighted"
+                    action.append(([x],[y]))
                     counter = counter + 1
                 elif demonstration_seq[step-1][x][y] == S:
                     final_demo.insert(step+counter,deepcopy(final_demo[step-1+counter]))
                     final_demo[step+counter][x][y] =  "S_highlighted"
+                    action.append(([x],[y]))
                     counter = counter + 1
-    return final_demo
+                else:
+                    action.append(([x],[y]))
+                    #print("what is going on?")
+                    #print("I do not know")
+        
+        #if all_equal == len(demonstration_seq[0][0])*len(demonstration_seq[0]):
+    action.append((0,0))
+
+    return action, final_demo
 
 
 
@@ -80,10 +101,11 @@ def find_difference(demonstration_seq):
 #             draw_token(token, r, c, ax, width=width, height = height)
 
 class Visualization():
-    def __init__(self,dict_seq):
+    def __init__(self,action, dict_seq):
         self.curr_time = 0
         self.end_time = len(dict_seq)-1
         self.dict_seq = dict_seq
+        self.action = action
         self.height = len(dict_seq[0])
         self.width = len(dict_seq[0][0])
         self.drawings = []
@@ -94,6 +116,7 @@ class Visualization():
         self.render_onscreen()
         self.fig.canvas.mpl_connect('key_press_event', self.on_key)
         #self.fig.canvas.mpl_connect('pick_event', self.on_key)
+        print(action[self.curr_time])
         plt.show()
 
     def to_next_timestep(self):
@@ -104,7 +127,7 @@ class Visualization():
 
     def on_key(self, event):
         self.to_next_timestep()
-        print("here")
+        print(action[self.curr_time])
         self.render_onscreen()
         self.fig.canvas.draw()
         return
@@ -148,8 +171,8 @@ class Visualization():
 
         for r in range(self.height):
             for c in range(self.width):
-                if r == 20 and c == 21:
-                    print("hello")
+                # if r == 20 and c == 21:
+                #     print("hello")
                 token = self.dict_seq[self.curr_time][r][c]
                 drawing = self.draw_token(token, r, c, self.ax, height = self.height,width=self.width)
                 if drawing is not None:
@@ -247,8 +270,8 @@ with open('unity_demonstrations/matrix.json') as json_file:
     data = json.load(json_file)
 
 dict_seq = demonstration_as_dict_creator(data)
-final_demo = find_difference(dict_seq)
-interaction = Visualization(final_demo)
+action, final_demo = find_difference(dict_seq)
+interaction = Visualization(action, final_demo)
 interaction.visualize_demonstration()
 #output = concat_n_images("B P")
 #plt.imshow(output)
