@@ -58,24 +58,7 @@ def get_child_programs(program, grammar):
 def program_is_complete(program):
     return find_symbol(program) == None
 
-def generate_programs(grammar, start_symbol=0, num_iterations=100000000):
-    queue = []
-    counter = itertools.count()
-
-    hq.heappush(queue, (0, 0, next(counter), [start_symbol]))
-    
-    for iteration in range(num_iterations):
-        priority, production_neg_log_prob, _, program = hq.heappop(queue)
-
-        for child_program, child_production_prob, child_priority in get_child_programs(program, grammar):
-            if program_is_complete(child_program):
-                yield StateActionProgram(stringify(child_program)), -production_neg_log_prob + np.log(child_production_prob)
-            else:
-                hq.heappush(queue, (priority + child_priority, production_neg_log_prob - np.log(child_production_prob), 
-                                    next(counter), child_program))
-
-
-def generate_programs_test(grammar, start_symbol=0, num_iterations=100000000, game_class = "Idk"):
+def generate_programs(grammar, start_symbol=0, num_iterations=100000000, game_class = "Idk"):
     queue = []
     counter = itertools.count()
 
@@ -84,14 +67,36 @@ def generate_programs_test(grammar, start_symbol=0, num_iterations=100000000, ga
     if game_class == "PlayingWithXYZ":  
         retrofitting = ['xyz.X','xyz.Y','xyz.Z','xyz.PASS','xyz.EMPTY']
         for j in retrofitting:
-            yield StateActionProgram(stringify("is_action(s, loc, a, {})".format(j))), np.log(0.20)
+            yield StateActionProgram(stringify("is_action(s, loc, a, {})".format(j)),base_class=game_class), np.log(0.20)
     
     for iteration in range(num_iterations):
         priority, production_neg_log_prob, _, program = hq.heappop(queue)
 
         for child_program, child_production_prob, child_priority in get_child_programs(program, grammar):
             if program_is_complete(child_program):
-                yield StateActionProgram(stringify(child_program)), -production_neg_log_prob + np.log(child_production_prob)
+                yield StateActionProgram(stringify(child_program),base_class=game_class), -production_neg_log_prob + np.log(child_production_prob)
             else:
                 hq.heappush(queue, (priority + child_priority, production_neg_log_prob - np.log(child_production_prob), 
                                     next(counter), child_program))
+
+
+# def generate_programs_test(grammar, start_symbol=0, num_iterations=100000000, game_class = "Idk"):
+#     queue = []
+#     counter = itertools.count()
+
+#     hq.heappush(queue, (0, 0, next(counter), [start_symbol]))
+
+#     if game_class == "PlayingWithXYZ":  
+#         retrofitting = ['xyz.X','xyz.Y','xyz.Z','xyz.PASS','xyz.EMPTY']
+#         for j in retrofitting:
+#             yield StateActionProgram(stringify("is_action(s, loc, a, {})".format(j))), np.log(0.20)
+    
+#     for iteration in range(num_iterations):
+#         priority, production_neg_log_prob, _, program = hq.heappop(queue)
+
+#         for child_program, child_production_prob, child_priority in get_child_programs(program, grammar):
+#             if program_is_complete(child_program):
+#                 yield StateActionProgram(stringify(child_program)), -production_neg_log_prob + np.log(child_production_prob)
+#             else:
+#                 hq.heappush(queue, (priority + child_priority, production_neg_log_prob - np.log(child_production_prob), 
+#                                     next(counter), child_program))
