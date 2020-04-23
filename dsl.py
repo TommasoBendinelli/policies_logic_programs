@@ -36,6 +36,23 @@ def is_action(state, loc, action, value):
         return True
     else: return False
 
+def is_there_on(state,direction,value, cell):
+    if direction == "NORD":
+        return np.any(state[cell:,])
+
+    if direction == "SOUTH":
+        return np.any(state[:cell,:])
+
+    if direction == "EAST":
+        return np.any(state[:,cell:])
+        
+    if direction == "WEST":
+        return np.any(state[:,:cell])
+    
+
+def is_around(state,radious,value,cell):
+    return np.any(state[:,:cell])
+    
 
 def scanning(direction, true_condition, false_condition, cell, obs, max_timeout=1):
     if cell is None:

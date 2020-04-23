@@ -15,13 +15,17 @@ class StateActionProgram(object):
 
     Made a class to have nice strs and pickling and to avoid redundant evals.
     """
-    def __init__(self, program):
+    def __init__(self, program, base_class = "Hello"):
+        self.base_class = base_class
         self.program = program
         self.wrapped = None
 
     def __call__(self, *args, **kwargs):
-        # if self.wrapped is None:
-        self.wrapped = eval('lambda s, loc, a: ' + self.program)
+        #if self.wrapped is None:
+        if self.base_class == "PlayingWithXYZ":
+            self.wrapped = eval('lambda s, loc, a: ' + self.program)
+        else:
+            self.wrapped = eval('lambda s, loc: ' + self.program)
         return self.wrapped(*args, **kwargs)
 
     def __repr__(self):
@@ -31,24 +35,28 @@ class StateActionProgram(object):
         return self.program
 
     def __getstate__(self):
-        return self.program
+        fin = dict()
+        fin['base_class'] = self.base_class 
+        fin['program'] = self.program
+        return fin
 
-    def __setstate__(self, program):
-        self.program = program
+    def __setstate__(self, fin):
+        self.program = fin['program']
         self.wrapped = None
+        self.base_class = fin['base_class']
 
     def __add__(self, s):
         if isinstance(s, str):
-            return StateActionProgram(self.program + s)
+            return StateActionProgram(self.program + s, self.base_class )
         elif isinstance(s, StateActionProgram):
-            return StateActionProgram(self.program + s.program)
+            return StateActionProgram(self.program + s.program, self.base_class )
         raise Exception()
 
     def __radd__(self, s):
         if isinstance(s, str):
-            return StateActionProgram(s + self.program)
+            return StateActionProgram(s + self.program, self.base_class )
         elif isinstance(s, StateActionProgram):
-            return StateActionProgram(s.program + self.program)
+            return StateActionProgram(s.program + self.program, self.base_class )
         raise Exception()
 
 class PLPPolicy(object):
@@ -56,13 +64,14 @@ class PLPPolicy(object):
     # with open("test.pkl", "rb") as f:
     #      plp_t, obs_t, action_and_loc_t = pickle.load(f)
 
-    def __init__(self, plps, probs, seed=0, map_choices=True):
+    def __init__(self, plps, probs, seed=0, map_choices=True,base_class=None):
         assert abs(np.sum(probs) - 1.) < 1e-5
 
         self.plps = plps
         self.probs = probs
         self.map_choices = map_choices
         self.rng = np.random.RandomState(seed)
+        self.base_class = base_class
 
         self._action_prob_cache = {}
 
@@ -75,7 +84,12 @@ class PLPPolicy(object):
             idx = np.argmax(action_probs).squeeze()
         else:
             idx = self.rng.choice(len(action_probs), p=action_probs)
-        return np.unravel_index(idx, obs.shape + (len(xyz.ALL_ACTION_TOKENS),))
+        
+        if self.base_class == "PlayingWithXYZ":
+            return np.unravel_index(idx, obs.shape + (len(xyz.ALL_ACTION_TOKENS),))
+        else:
+            return np.unravel_index(idx, obs.shape)
+
 
     def hash_obs(self, obs):
         return tuple(tuple(l) for l in obs)
@@ -89,12 +103,20 @@ class PLPPolicy(object):
         if hashed_obs in self._action_prob_cache:
             return self._action_prob_cache[hashed_obs]
 
-        action_probs = np.zeros((obs.shape + (len(xyz.ALL_ACTION_TOKENS),)), dtype=np.float32)
 
-        for plp, prob in zip(self.plps, self.probs):
-            for r, c, a in self.get_plp_suggestions(plp, obs):
-                a = self.action_conv(a)
-                action_probs[r, c, a] += prob
+        if self.base_class == "PlayingWithXYZ":
+            action_probs = np.zeros((obs.shape + (len(xyz.ALL_ACTION_TOKENS),)), dtype=np.float32)
+            for plp, prob in zip(self.plps, self.probs):
+                for r, c, a in self.get_plp_suggestions(plp, obs):
+                    a = self.action_conv(a)
+                    action_probs[r, c, a] += prob
+        else:
+            action_probs = np.zeros(obs.shape, dtype=np.float32)
+            for plp, prob in zip(self.plps, self.probs):
+                for r, c in self.get_plp_suggestions(plp, obs):
+                    action_probs[r, c] += prob
+
+        
 
         denom = np.sum(action_probs)
         if denom == 0.:
@@ -107,10 +129,17 @@ class PLPPolicy(object):
     def get_plp_suggestions(self, plp, obs):
         suggestions = []
 
-        for r in range(obs.shape[0]):
-            for c in range(obs.shape[1]):
-                for a in xyz.ALL_ACTION_TOKENS: #('xyz.PASS','xyz.X','xyz.Y','xyz.Z'):
-                        if plp(obs, (r,c), a):
-                            suggestions.append((r, c, a))
+        if self.base_class == "PlayingWithXYZ":
+            for r in range(obs.shape[0]):
+                for c in range(obs.shape[1]):
+                    for a in xyz.ALL_ACTION_TOKENS: #('xyz.PASS','xyz.X','xyz.Y','xyz.Z'):
+                            if plp(obs, (r,c), a):
+                                suggestions.append((r, c, a))
+        else:
+            for r in range(obs.shape[0]):
+                for c in range(obs.shape[1]):
+                    if plp(obs, (r,c)):
+                        suggestions.append((r, c))
+
 
         return suggestions
