@@ -2,30 +2,10 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import RegularPolygon, FancyArrow
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from matplotlib.patches import RegularPolygon, FancyArrow
-from generalization_grid_games.envs.utils import get_asset_path
 import numpy as np
+from UnityDemo.constants import *
 
 class UnityVisualization():
-    EMPTY = [None,""]
-    P = 'P'
-    P_Clicked = 'P_highlighted'
-    S = 'S'
-    S_CLicked = 'S_highlighted'
-    B = 'B'
-    START = 's'
-    PASS = 'pass'
-    CLICK = 'click'
-    ALL_TOKENS = [EMPTY, P, S, B, PASS, START]
-    ALL_ACTION_TOKENS = [CLICK, PASS]
-
-    TOKEN_IMAGES = {
-        P: plt.imread(get_asset_path('p.png')),
-        S: plt.imread(get_asset_path('s.png')),
-        B: plt.imread(get_asset_path('b.png')),
-        START: plt.imread(get_asset_path('start.png')),
-        P_Clicked: plt.imread(get_asset_path('P_highlighted.png')),
-        S_CLicked: plt.imread(get_asset_path('S_highlighted.png'))
-    }
 
     def __init__(self,action, dict_seq):
         self.curr_time = 0
@@ -57,37 +37,6 @@ class UnityVisualization():
         self.render_onscreen()
         self.fig.canvas.draw()
         return
-        #plt.show()
-
-    # def render_onscreen_t(self):
-    #     for drawing in self.drawings:
-    #         drawing.remove()
-    #     self.drawings = []
-
-    #     for r in range(self.height):
-    #         for c in range(self.width):
-    #             token = self.dict_seq[self.curr_time][r][c]
-    #             drawing = self.draw_token(token, r, c, self.ax, height = self.height,width=self.width)
-    #             if drawing is not None:
-    #                 self.drawings.append(drawing)
-    
-    # @staticmethod
-    # def merge_multiple_images(token):
-    #     images = [TOKEN_IMAGES[tk] for tk in list(token.replace(" ",""))]
-    #     widths, heights = zip(*(i.shape for i in images))
-
-    #     total_width = sum(widths)
-    #     max_height = max(heights)
-
-    #     new_im = Image.new('RGB', (total_width, max_height))
-
-    #     x_offset = 0
-    #     for im in images:
-    #         new_im.paste(Image.fromarray(im[:,:,:3]), (x_offset,0))
-    #         x_offset += im.size[0]
-
-    #     new_im.save('test.jpg')
-
 
 
     def render_onscreen(self):
@@ -105,7 +54,7 @@ class UnityVisualization():
                     self.drawings.append(drawing)
 
     def draw_token(self,token, r, c, ax, height, width):
-        if token in self.EMPTY:
+        if token in EMPTY:
             edge_color = '#888888'
             face_color = 'white'
             
@@ -132,7 +81,7 @@ class UnityVisualization():
             ax.add_patch(drawing)
 
             tk = token.split()[-1]
-            im = self.TOKEN_IMAGES[tk]
+            im = TOKEN_IMAGES[tk]
             oi = OffsetImage(im, zoom = 1 * (self.fig_scale*2  / max(height, width)**0.5))
             box = AnnotationBbox(oi, (c + 0.5, (height - 1 - r) + 0.5), frameon=False)
 
