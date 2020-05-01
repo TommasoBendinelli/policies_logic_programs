@@ -24,9 +24,20 @@ def at_cell_with_value(value, local_program, obs):
     matches = np.argwhere(obs == value)
     if len(matches) == 0:
         cell = None
+        return False
     else:
         cell = matches[0]
     return local_program(cell, obs)
+
+def at_all_cell_with_value(value, local_program, obs):
+    matches = np.argwhere(obs == value)
+    if len(matches) == 0:
+        cell = None
+        return False#local_program(cell,obs)
+    curr_cond = True
+    for match in matches:
+        curr_cond = curr_cond and local_program(match,obs)
+    return curr_cond
 
 def at_action_cell(local_program, cell, obs):
     return local_program(cell, obs)
@@ -36,23 +47,33 @@ def is_action(state, loc, action, value):
         return True
     else: return False
 
-def is_there_on(state,direction,value, cell):
+def is_there_on(direction,value, cell ,obs):
+    if np.any(cell == None):
+        return False
     if direction == "NORD":
-        return np.any(state[cell:,])
+        return np.any(obs[(cell[0]+1):,...]==value)
 
     if direction == "SOUTH":
-        return np.any(state[:cell,:])
+        return np.any(obs[:cell[0],...]==value)
 
     if direction == "EAST":
-        return np.any(state[:,cell:])
+        return np.any(obs[...,(cell[0]+1):]==value)
         
     if direction == "WEST":
-        return np.any(state[:,:cell])
+        return np.any(obs[:cell[0],...]==value)
     
 
-def is_around(state,radious,value,cell):
-    return np.any(state[:,:cell])
-    
+def is_around(radious,value,cell,obs):
+    return np.any(n_closest(obs,cell,d=radious)==value)
+
+def n_closest(x,n,d=1):
+    return x[n[0]-d:n[0]+d+1,n[1]-d:n[1]+d+1]
+
+def is_finish(loc):
+    if loc == (0,0):
+        return True
+    else:
+        return False
 
 def scanning(direction, true_condition, false_condition, cell, obs, max_timeout=1):
     if cell is None:
@@ -76,30 +97,65 @@ def scanning(direction, true_condition, false_condition, cell, obs, max_timeout=
 
 
 ### Grammatical Prior
-START, CONDITION, LOCAL_PROGRAM, DIRECTION, POSITIVE_NUM, NEGATIVE_NUM, VALUE = range(7)
+#START, LOCAL_ACTION_PROGRAM,LOCAL_STATE_PROGRAM,CONDITION,DIRECTION,POSITIVE_NUM, NEGATIVE_NUM, CARDINAL_DIR, VALUE = range(9)
+START, LOCAL_ACTION_PROGRAM,LOCAL_STATE_PROGRAM,CONDITION,RADIOUS, CARDINAL_DIR, VALUE = range(7)
+
+
+def create_grammar_unity(object_types):
+    grammar = {
+        START : ([['is_finish(loc)'],
+                  ['at_cell_with_value(', VALUE, ',', LOCAL_STATE_PROGRAM, ', s)'],
+                  ['at_action_cell(', LOCAL_ACTION_PROGRAM, ', loc, s)'],
+                  ['at_all_cell_with_value(',VALUE,',',LOCAL_STATE_PROGRAM,', s)']],
+                  [0.25,0.25, 0.25,0.25]),
+        LOCAL_ACTION_PROGRAM : ([['lambda cell,o : is_there_on(',CARDINAL_DIR,',', VALUE, ', cell, o)'],
+                          ['lambda cell,o : shifted( (0,0)', ',', CONDITION, ', cell, o)'],
+                          ['lambda cell,o : is_around(',RADIOUS,',', VALUE, ', cell, o)']],
+                          [0.33,0.33,0.33]),
+        LOCAL_STATE_PROGRAM : ([['lambda cell,o : is_there_on(', CARDINAL_DIR,',', VALUE, ', cell, o)'],
+                                ['lambda cell,o : is_around(',RADIOUS,',', VALUE, ', cell, o)']],
+                          [0.5,0.5]),
+        CONDITION : ([['lambda cell,o : cell_is_value(', VALUE, ', cell, o)'],],
+                      #['lambda cell,o : scanning(', DIRECTION, ',', LOCAL_PROGRAM, ',', LOCAL_PROGRAM, ', cell, o)']],
+                      [1]),
+        # DIRECTION : ([['(', POSITIVE_NUM, ', 0)'], ['(0,', POSITIVE_NUM, ')'],
+        #                ['(', NEGATIVE_NUM, ', 0)'], ['(0,', NEGATIVE_NUM, ')'],
+        #                ['(', POSITIVE_NUM, ',', POSITIVE_NUM, ')'], ['(', NEGATIVE_NUM, ',', POSITIVE_NUM, ')'],
+        #                ['(', POSITIVE_NUM, ',', NEGATIVE_NUM, ')'], ['(', NEGATIVE_NUM, ',', NEGATIVE_NUM, ')']],
+        #               [1./8] * 8),
+        # POSITIVE_NUM : ([['1']], #[POSITIVE_NUM, '+1']],
+        #                  [1]),
+        # NEGATIVE_NUM : ([['-1']],#, [NEGATIVE_NUM, '-1']],
+        #                  [1]),
+        RADIOUS: ([['1'],['5'],['10']],[0.9,0.5,0.1]),
+        CARDINAL_DIR : ([["'NORD'"],["'SOUTH'"],["'WEST'"],["'EAST'"]],[0.25,0.25,0.25,0.25]),
+        VALUE : (tuple(obj for obj in object_types if obj != "None" and obj != "unity.START" and obj != "unity.CLICK" and obj != 'unity.PASS'), 
+                 [1./len(object_types) for _ in object_types if _ != "None"])
+    }
+    return grammar
 
 def create_grammar(object_types):
     grammar = {
         START : ([['at_cell_with_value(', VALUE, ',', LOCAL_PROGRAM, ', s)'],
-                  ['at_action_cell(', LOCAL_PROGRAM, ', loc, s)']],
-                  [0.5, 0.5]),
+                ['at_action_cell(', LOCAL_PROGRAM, ', loc, s)']],
+                [0.5, 0.5]),
         LOCAL_PROGRAM : ([[CONDITION],
-                          ['lambda cell,o : shifted(', DIRECTION, ',', CONDITION, ', cell, o)']],
-                          [0.5, 0.5]),
+                        ['lambda cell,o : shifted(', DIRECTION, ',', CONDITION, ', cell, o)']],
+                        [0.5, 0.5]),
         CONDITION : ([['lambda cell,o : cell_is_value(', VALUE, ', cell, o)'],],
-                      #['lambda cell,o : scanning(', DIRECTION, ',', LOCAL_PROGRAM, ',', LOCAL_PROGRAM, ', cell, o)']],
-                      [1]),
+                    #['lambda cell,o : scanning(', DIRECTION, ',', LOCAL_PROGRAM, ',', LOCAL_PROGRAM, ', cell, o)']],
+                    [1]),
         DIRECTION : ([['(', POSITIVE_NUM, ', 0)'], ['(0,', POSITIVE_NUM, ')'],
-                      ['(', NEGATIVE_NUM, ', 0)'], ['(0,', NEGATIVE_NUM, ')'],
-                      ['(', POSITIVE_NUM, ',', POSITIVE_NUM, ')'], ['(', NEGATIVE_NUM, ',', POSITIVE_NUM, ')'],
-                      ['(', POSITIVE_NUM, ',', NEGATIVE_NUM, ')'], ['(', NEGATIVE_NUM, ',', NEGATIVE_NUM, ')']],
-                     [1./8] * 8),
+                    ['(', NEGATIVE_NUM, ', 0)'], ['(0,', NEGATIVE_NUM, ')'],
+                    ['(', POSITIVE_NUM, ',', POSITIVE_NUM, ')'], ['(', NEGATIVE_NUM, ',', POSITIVE_NUM, ')'],
+                    ['(', POSITIVE_NUM, ',', NEGATIVE_NUM, ')'], ['(', NEGATIVE_NUM, ',', NEGATIVE_NUM, ')']],
+                    [1./8] * 8),
         POSITIVE_NUM : ([['1'], [POSITIVE_NUM, '+1']],
-                         [0.5, 0.5]),
+                        [0.5, 0.5]),
         NEGATIVE_NUM : ([['-1'], [NEGATIVE_NUM, '-1']],
-                         [0.5, 0.5]),
+                        [0.5, 0.5]),
         VALUE : (object_types, 
-                 [1./len(object_types) for _ in object_types])
+                [1./len(object_types) for _ in object_types])
     }
     return grammar
 

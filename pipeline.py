@@ -3,7 +3,7 @@ from dsl import *
 from env_settings import *
 from grammar_utils import generate_programs#, generate_programs_test
 from dt_utils import extract_plp_from_dt
-from expert_demonstrations import get_demonstrations, get_interactive_demo
+from expert_demonstrations import get_demonstrations, get_interactive_demo, unity_demontration
 from policy import StateActionProgram, PLPPolicy
 from utils import run_single_episode
 from generalization_grid_games.envs import playing_with_XYZ
@@ -13,6 +13,7 @@ from collections import defaultdict
 from functools import partial
 from sklearn.tree import DecisionTreeClassifier
 from scipy.special import logsumexp
+#from scipy.stats import bernoulli
 from scipy.sparse import csr_matrix, lil_matrix, vstack
 from copy import deepcopy
 import gym
@@ -21,6 +22,9 @@ import numpy as np
 import time
 import os
 import matplotlib
+import UnityDemo.UnityVisualization
+from numpy.random import default_rng
+
 matplotlib.use('TkAgg')
 
 cache_dir = 'cache'
@@ -44,7 +48,11 @@ def get_program_set(base_class_name, num_programs):
         Log probabilities for each program.
     """
     object_types = get_object_types(base_class_name)
-    grammar = create_grammar(object_types)
+    if base_class_name == "UnityGame":
+        object_types = object_types #
+        grammar = create_grammar_unity(object_types) 
+    else:
+       grammar = create_grammar(object_types)
 
     # if base_class_name=="PlayingWithXYZ":
     #     program_generator = generate_programs_test(grammar)
@@ -167,6 +175,52 @@ class PlayingWithXYZ:
 
             return positive_examples, negative_examples
 
+# class UnityGame:
+#     object_types = playing_with_XYZ.ALL_ACTION_TOKENS   
+    
+#     @classmethod
+#     def extract_examples_from_demonstration(cls,demonstration):
+#         positive_examples = []
+#         negative_examples = []
+#         start = time.time()
+#         for idx, demonstration_item in enumerate(demonstration):
+#             #demo_positive_examples, demo_negative_examples = cls.extract_examples_from_demonstration_item_TEST(idx,demonstration)
+#             #demo_positive_examples, demo_negative_examples = cls.extract_examples_from_demonstration_item(demonstration_item)
+#             demo_positive_examples, demo_negative_examples = cls.extract_examples_from_demonstration_item_sample(demonstration_item)
+#             positive_examples.extend(demo_positive_examples)
+#             negative_examples.extend(demo_negative_examples)
+#         print("Total time for generating demonstrations: {}".format(time.time()-start))
+#         return positive_examples, negative_examples
+    
+#     @classmethod
+#     def extract_examples_from_demonstration_item_sample(cls,demonstration_item):
+#         state, loc_and_action = demonstration_item
+#         a, loc = loc_and_action
+
+#         positive_examples = [(state, loc, a)]
+#         negative_examples = []
+#         try:
+#             #Sample 250 hundred random demonstrations instead of computing all of them
+#             indeces = random.sample(list(product(range(state.shape[0]),range(state.shape[1]),['x','y','z','empty','pass'])),250)
+
+#             for nums in indeces:
+#                 if nums[:2] == loc and nums[2] == a: 
+#                     continue
+#                 else:
+#                     negative_examples.append((state, nums[:2], nums[2]))
+#             return positive_examples, negative_examples
+#         except:
+#             print("Skipped as no so many demonstrations")
+#             for r in range(state.shape[0]):
+#                 for c in range(state.shape[1]):
+#                     for val in cls.object_types:
+#                         if val == a and (r, c) == loc:
+#                             continue
+#                         else:
+#                             negative_examples.append((state, (r, c), val))
+
+#             return positive_examples, negative_examples
+
     # @classmethod
     # def extract_examples_from_demonstration_item_TEST(cls,idx,demonstration):
     #     state, loc_and_action = demonstration[idx]
@@ -214,11 +268,58 @@ class PlayingWithXYZ:
     #         fn_inputs[idx][1] = fn_inputs[idx][1][1]
     #         fn_inputs[idx] = tuple(fn_inputs[idx])
 
-    #         acton_inputs[idx] = list(acton_inputs[idx])
-    #         acton_inputs[idx][1] = acton_inputs[idx][1][0]
+    #         acton_inputs[idx] = list(acton_inputs[iDemonstrationHandler   acton_inputs[idx][1] = acton_inputs[idx][1][0]
     #         acton_inputs[idx] = tuple(acton_inputs[idx])
     #     return fn_inputs, acton_inputs
+
+# class UnityGame:
+#     object_types = playing_with_XYZ.ALL_ACTION_TOKENS   
     
+
+#     @classmethod
+#     def extract_examples_from_demonstration(cls,demonstration):
+#         positive_examples = []
+#         negative_examples = []
+#         start = time.time()
+#         for idx, demonstration_item in enumerate(demonstration):
+#             #demo_positive_examples, demo_negative_examples = cls.extract_examples_from_demonstration_item_TEST(idx,demonstration)
+#             #demo_positive_examples, demo_negative_examples = cls.extract_examples_from_demonstration_item(demonstration_item)
+#             demo_positive_examples, demo_negative_examples = cls.extract_examples_from_demonstration_item_sample(demonstration_item)
+#             positive_examples.extend(demo_positive_examples)
+#             negative_examples.extend(demo_negative_examples)
+#         print("Total time for generating demonstrations: {}".format(time.time()-start))
+#         return positive_examples, negative_examples
+    
+#     @classmethod
+#     def extract_examples_from_demonstration_item_sample(cls,demonstration_item):
+#         state, loc_and_action = demonstration_item
+#         a, loc = loc_and_action
+
+#         positive_examples = [(state, loc, a)]
+#         negative_examples = []
+#         try:
+#             #Sample 250 hundred random demonstrations instead of computing all of them
+#             indeces = random.sample(list(product(range(state.shape[0]),range(state.shape[1]),['x','y','z','empty','pass'])),250)
+
+#             for nums in indeces:
+#                 if nums[:2] == loc and nums[2] == a: 
+#                     continue
+#                 else:
+#                     negative_examples.append((state, nums[:2], nums[2]))
+#             return positive_examples, negative_examples
+#         except:
+#             print("Skipped as no so many demonstrations")
+#             for r in range(state.shape[0]):
+#                 for c in range(state.shape[1]):
+#                     for val in cls.object_types:
+#                         if val == a and (r, c) == loc:
+#                             continue
+#                         else:
+#                             negative_examples.append((state, (r, c), val))
+
+#             return positive_examples, negative_examples
+
+
 def apply_programs(programs, fn_input):
     """
     Worker function that applies a list of programs to a single given input.
@@ -284,8 +385,10 @@ def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo
         demonstration = get_demonstrations(base_class_name, demo_numbers=(demo_number,),  max_demo_length=1, interactive=interactive)
         positive_examples, negative_examples  = PlayingWithXYZ.extract_examples_from_demonstration(demonstration)
     elif base_class_name == "UnityGame":
-        demonstration = get_demonstrations(base_class_name, demo_numbers=(demo_number,),  max_demo_length=1, interactive=interactive)
-        positive_examples, negative_examples  = PlayingWithXYZ.extract_examples_from_demonstration(demonstration)
+        demonstration = unity_demontration(demo_number)
+        positive_examples, negative_examples  = demonstration.extract_examples_from_demonstration()
+        #Visualize demostration 
+        #UnityDemo.UnityVisualization.UnityVisualization(negative_examples).visualize_demonstration()
     else: 
         demonstration = get_demonstrations(base_class_name, demo_numbers=(demo_number,))
         positive_examples, negative_examples = extract_examples_from_demonstration(demonstration)
@@ -311,19 +414,30 @@ def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo
     #             X[X_idx,i] = x 
 
     start = time.time()
+
+    #Debugging
+    #program_interval = 200
+
     # This loop avoids memory issues
     for i in range(l, num_programs, program_interval):
         end = min(i+program_interval, num_programs)
         print('Iteration {} of {}'.format(i, num_programs), end='\r')
 
-        num_workers = multiprocessing.cpu_count()
-        pool = multiprocessing.Pool(num_workers)
-
-        fn = partial(apply_programs, programs[i:end])
         
+        
+        #Debugging
+        # fn = partial(apply_programs, programs[i:end])
+        # if i == 49:
+        #     print("Hello2")
+        # results = list(map(fn, fn_inputs))
+        # print("Miao")
+        #Multiprocessing
+        num_workers = multiprocessing.cpu_count()        
+        pool = multiprocessing.Pool(num_workers)
+        fn = partial(apply_programs, programs[i:end])
         results = pool.map(fn, fn_inputs)
         pool.close()
-
+        #print("Hello")
         for X_idx, x in enumerate(results):
             X[X_idx, i:end] = x
     print("Total time for generating programs: {}".format(time.time()-start))
@@ -365,10 +479,17 @@ def learn_single_batch_decision_trees(y, num_dts, X_i):
     clfs : [ DecisionTreeClassifier ]
     """
     clfs = []
-
+    numbers = [1]
     for seed in range(num_dts):
-        clf = DecisionTreeClassifier(random_state=seed)
-        clf.fit(X_i, y)
+        X_i_curr = X_i
+        rng = default_rng()
+        numbers = rng.choice(X_i_curr.shape[1], size=int(X_i_curr.shape[1]/4000*seed), replace=False)
+        if len(numbers!=0): 
+            #niente = np.delete(X_i_curr.toarray(), numbers, axis=1) 
+            X_i_curr = lil_matrix(X_i_curr)
+            X_i_curr[:,numbers] = False
+        clf = DecisionTreeClassifier(random_state=seed*6)
+        clf.fit(X_i_curr, y)
         clfs.append(clf)
 
     return clfs
@@ -393,19 +514,28 @@ def learn_plps(X, y, programs, program_prior_log_probs, num_dts=5, program_gener
     plps = []
     plp_priors = []
     likelihood = []
+    total_leaves = []
+    variances = []
+    clf_tot = []
+    num_features = []
 
     num_programs = len(programs)
 
     for i in range(0, num_programs, program_generation_step_size):
         print("Learning plps with {} programs".format(i))
         for clf in learn_single_batch_decision_trees(y, num_dts, X[:, :i+1]):
-            plp, plp_prior_log_prob, likelihood_prob = extract_plp_from_dt(clf, programs, program_prior_log_probs, len([seq for seq in y if seq==1]))
+            plp, plp_prior_log_prob, likelihood_prob, total_leaf, variance = extract_plp_from_dt(clf, programs, program_prior_log_probs, len([seq for seq in y if seq==1]))
             likelihood.append(likelihood_prob)
             plps.append(plp)
             plp_priors.append(plp_prior_log_prob)
-        
+            total_leaves.append(total_leaf)
+            variances.append(variance)
+            clf_tot.append(clf)
+            num_features.append(i)
+
+    
     print("Leart all probabilities!")
-    return plps, plp_priors, likelihood
+    return plps, plp_priors, likelihood, total_leaves, variances, clf_tot, num_features
 
 def compute_likelihood_single_plp(demonstrations, plp):
     """
@@ -499,15 +629,56 @@ def select_particles(particles, particle_log_probs, max_num_particles):
         pass
     return sorted_particles[:end], sorted_log_probs[:end]
 
+def filter_negative_demonstrations(design_matrix,output):
+    """
+    Another sampling from negative distribution to filter out false positives
+    """
+    isSkip = np.zeros(len(design_matrix.toarray()))
+    design_matrix = design_matrix.toarray()
+    positive_design_matrix = design_matrix[output==1]
+    negative_design_matrix = design_matrix[output==0]
+    positive_mean = np.var(positive_design_matrix,axis=0)
+    positive_var = np.mean(positive_design_matrix,axis=0)
+    negative_mean = np.var(negative_design_matrix,axis=0)
+    negative_var = np.mean(negative_design_matrix,axis=0)
+    #Kick out the 50 demonstrations with lowest probability
+
+    for x in range(len(isSkip)):
+        if design_matrix[x,-1] == 1:
+            continue
+        isSkip[x] = check_negative_example(design_matrix[x],positive_mean,threeshold=0.2,n_max=5)
+
+    design_matrix = design_matrix[isSkip == 0]
+    output = output[isSkip==0]
+    #design_matrix = design_matrix[1]
+    #design_matrix = design_matrix[2]
+    return design_matrix,output
+
+
+
+def check_negative_example(X_row,positive_mean,threeshold=0.2,n_max=5):
+    """
+    Use Bernoulli to check out which probability to keep
+    """
+    skip = 0
+    total = np.sum(X_row[(X_row*positive_mean) > threeshold])
+    if total > n_max:
+        skip=1
+        return skip
+    else:
+        return skip
+
 @manage_cache(cache_dir, '.pkl', enabled = useCache)
 def train(base_class_name, demo_numbers, program_generation_step_size, num_programs, num_dts, max_num_particles, interactive=False):
     programs, program_prior_log_probs = get_program_set(base_class_name, num_programs)
 
     X, y = run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers, interactive)
-    plps, plp_priors,likelihood = learn_plps(X, y, programs, program_prior_log_probs, num_dts=num_dts,
+    #X, y = filter_negative_demonstrations(X,y)
+
+    plps, plp_priors,likelihood, total_leaves, variance, clf_tot, num_features = learn_plps(X, y, programs, program_prior_log_probs, num_dts=num_dts,
         program_generation_step_size=program_generation_step_size)
-    if base_class_name == "PlayingWithXYZ": demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers, max_demo_length=2,interactive=interactive)
-    else: demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers)
+    #if base_class_name == "PlayingWithXYZ": demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers, max_demo_length=2,interactive=interactive)
+    #else: demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers)
     #print("Starting to compute the likelihood")
     #likelihoods = compute_likelihood_plps(plps, demonstrations)
     #print("Likelihood calculation completed")
@@ -520,19 +691,28 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
     particles = []
     particle_log_probs = []
 
-    for plp, prior, likelihood in zip(plps, plp_priors, likelihood):
-        print("Prior: {}".format(prior))
+    for plp, prior_scalar, likelihood_scalar, curr_variance in zip(plps, plp_priors, likelihood, variance):
+        #print("Prior: {}".format(prior))
         particles.append(plp)
-        print("Likelihood: {}".format(likelihood))
-        #particle_log_probs.append(prior + likelihood)
-        particle_log_probs.append(prior + 500*likelihood)
-        print("Posterior: {}".format(prior + 500*likelihood))
+        #print("Likelihood: {}".format(likelihood))
+        particle_log_probs.append(prior_scalar + likelihood_scalar)
+        #particle_log_probs.append(prior_scalar + curr_variance )
+        #print("Posterior: {}".format(prior + 500*likelihood))
 
 
     print("\nDone!")
     map_idx = np.argmax(particle_log_probs).squeeze()
+    #map_idx = np.argmax(variance).squeeze()
     print("MAP program ({}):".format(particle_log_probs[map_idx]))
+    print("Likelihood {}".format(likelihood[map_idx]))
+    print("Prior {}".format(plp_priors[map_idx]))
+    print("Total leaves {}".format(total_leaves[map_idx]))
+    print("Variance: {}".format(variance[map_idx]))
     print(particles[map_idx])
+    print("Tree Learnt {}".format(clf_tot[map_idx]))
+    print("Useful programs {}".format(num_features[map_idx]))
+    #TEST Analyzing wrong demonstrations
+    extract_plp_from_dt(clf_tot[map_idx], programs, program_prior_log_probs, len([seq for seq in y if seq==1]))
 
     top_particles, top_particle_log_probs = select_particles(particles, particle_log_probs, max_num_particles)
     if len(top_particle_log_probs) > 0:
@@ -547,7 +727,7 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
     return policy
 
 ## Test (given subset of environments)
-def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=15,
+def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=10,
          record_videos=True, video_format='mp4', interactive = True):
     
     env_names = ['{}{}-v0'.format(base_class_name, i) for i in test_env_nums]
@@ -580,7 +760,7 @@ def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=15,
 
 if __name__  == "__main__":
     #train("TwoPileNim", range(11), 1, 31, 100, 25)
-    policy = train("PlayingWithXYZ", range(3), 5, 500, 2, 5, interactive=True )
+    policy = train("UnityGame", range(0,3), 20, 300, 500, 5, interactive=True )
     #policy = interactive_learning()
-    test_results = test(policy, "PlayingWithXYZ", range(3,5), record_videos=True, interactive = True)
+    test_results = test(policy, "UnityGame", range(0,2), record_videos=True, interactive = False)
     #print("Test results:", test_results)

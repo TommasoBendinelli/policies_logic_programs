@@ -2,11 +2,11 @@ import json
 import matplotlib.pyplot as plt
 from matplotlib.patches import RegularPolygon, FancyArrow
 #from .generalization_grid_game import create_gym_envs
-from generalization_grid_games.envs.playingXYZGeneralizationGridGame import PlayingXYZGeneralizationGridGame
+#from generalization_grid_games.envs.playingXYZGeneralizationGridGame import PlayingXYZGeneralizationGridGame
 from generalization_grid_games.envs.utils import get_asset_path, changeResolution
 from copy import deepcopy
 from UnityDemo.UnityVisualization import UnityVisualization
-from UnityDemo.GetDemonstration import GetDemonstration
+from UnityDemo.GetDemonstration import DemonstrationHandler
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from matplotlib.patches import RegularPolygon, FancyArrow
 import sys
@@ -86,9 +86,12 @@ def find_difference(demonstration_seq):
 
 
 
-demo_object = GetDemonstration()
-action, final_demo = demo_object()
-interaction = UnityVisualization(action, final_demo)
+demo_object = DemonstrationHandler("demo2.json",reversed_demo=True)
+final_demo = demo_object()
+# final_demo = demo_object(raw=True)
+# final_demo = list(zip(*final_demo))[0]
+# demo_object.other_representation(final_demo)
+interaction = UnityVisualization(final_demo)
 interaction.visualize_demonstration()
 
 

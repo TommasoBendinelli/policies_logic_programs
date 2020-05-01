@@ -3,6 +3,8 @@ from env_settings import *
 
 import numpy as np
 import pickle 
+import random
+from itertools import product
 
 
 # with open('plps.pkl', 'rb') as f: 
@@ -110,6 +112,11 @@ class PLPPolicy(object):
                 for r, c, a in self.get_plp_suggestions(plp, obs):
                     a = self.action_conv(a)
                     action_probs[r, c, a] += prob
+        elif self.base_class == "UnityGame":
+            action_probs = np.zeros(obs.shape, dtype=np.float32)
+            for plp, prob in zip(self.plps, self.probs):
+                for r, c in self.get_plp_suggestions(plp, obs):
+                    action_probs[r, c] += prob
         else:
             action_probs = np.zeros(obs.shape, dtype=np.float32)
             for plp, prob in zip(self.plps, self.probs):
@@ -135,6 +142,23 @@ class PLPPolicy(object):
                     for a in xyz.ALL_ACTION_TOKENS: #('xyz.PASS','xyz.X','xyz.Y','xyz.Z'):
                             if plp(obs, (r,c), a):
                                 suggestions.append((r, c, a))
+
+        elif self.base_class == "UnityGame":
+            #First check on states
+            for r in range(obs.shape[0]):
+                for c in range(obs.shape[1]):
+                    if obs[r,c] == None and [r,c] != [0,0]:
+                        continue
+                    if plp(obs, (r,c)):
+                        suggestions.append((r, c))
+
+            #Then pick 100 more actions
+            indeces = random.sample(list(product(range(obs.shape[0]),range(obs.shape[1]))),100)
+            for nums in indeces:
+                    if obs[nums] != None:
+                        continue
+                    if plp(obs, nums):
+                        suggestions.append(nums)
         else:
             for r in range(obs.shape[0]):
                 for c in range(obs.shape[1]):

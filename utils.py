@@ -1,4 +1,5 @@
 from generalization_grid_games.envs.playing_with_XYZ import PlayingWithXYZ
+import numpy as np
 
 def run_single_episode(env, policy, record_video=False, video_out_path=None, max_num_steps=100, interactive=False, base_class = None):
     res = {}
@@ -37,6 +38,8 @@ def run_single_episode(env, policy, record_video=False, video_out_path=None, max
     else:
         for t in range(max_num_steps):
             action = policy(obs)
+            print("Place highlitghted: {}".format(np.argwhere((obs == 'P_highlighted') | (obs == 'S_highlighted'))))
+            print("Action: {}".format(action) + " Hence {}".format(obs[action]))
             new_obs, reward, done, debug_info = env.step(action)
             total_reward += reward
 

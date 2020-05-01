@@ -6,6 +6,7 @@ import os
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
+import UnityDemo.GetDemonstration
 # from interactiveLearning import InteractiveLearning
 from cache_utils import demonstration_saver
 #from globals_var import action, action_done
@@ -231,8 +232,9 @@ def expert_xyz_policy(layout, interactive = False):
     right_arrow = tuple(np.argwhere(layout == rfts.RIGHT_ARROW)[0])
     left_arrow = tuple(np.argwhere(layout == rfts.LEFT_ARROW)[0])
 
-def unity_demontration():
-     
+def unity_demontration(demo_number):
+    demos = ["demo1.json","demo2.json","demo3.json"]
+    return UnityDemo.GetDemonstration.DemonstrationHandler(demos[demo_number], false_demonstration_per_step=0,complete_random=True)
 
 
 def get_demonstrations(env_name, demo_numbers=(1, 2, 3, 4), max_demo_length=np.inf, interactive=False):

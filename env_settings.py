@@ -4,6 +4,7 @@ from generalization_grid_games.envs import stop_the_fall as stf
 from generalization_grid_games.envs import chase as ec
 from generalization_grid_games.envs import reach_for_the_star as rfts
 from generalization_grid_games.envs import playing_with_XYZ as xyz
+from UnityDemo import constants as unity
 
 import generalization_grid_games
 
@@ -21,6 +22,8 @@ def get_object_types(base_class_name):
         return ('rfts.EMPTY', 'rfts.AGENT', 'rfts.STAR', 'rfts.DRAWN', 'rfts.LEFT_ARROW', 'rfts.RIGHT_ARROW', 'None')
     if base_class_name == 'PlayingWithXYZ':
         return ('xyz.EMPTY','xyz.PASS','xyz.X','xyz.Y','xyz.Z','xyz.START')
+    if base_class_name == 'UnityGame':
+        return ('unity.P','unity.P_Clicked','unity.S','unity.S_CLicked','unity.B','unity.START','unity.PASS','unity.CLICK',"None")
 
 
     raise Exception("Unknown class name", base_class_name)
