@@ -490,11 +490,13 @@ def learn_single_batch_decision_trees(y, num_dts, X_i):
             X_i_curr = lil_matrix(X_i_curr)
             X_i_curr[:,numbers] = False
         clf = DecisionTreeClassifier(random_state=seed*6)
-        cv_results = cross_validate(clf,X_i_curr,y, return_estimator=True,cv=3, return_train_score=True)
-        if cv_results['test_score'].max() == 1 and cv_results['train_score'][cv_results['test_score'].argmax()] == 1:
-            res = cv_results['estimator'][cv_results['test_score'].argmax()]
-            clfs.append([res,cv_results])
-        #clf.fit(X_i_curr, y)
+        # cv_results = cross_validate(clf,X_i_curr,y, return_estimator=True,cv=10, return_train_score=True)
+        # if cv_results['test_score'].max() == 1 and cv_results['train_score'][cv_results['test_score'].argmax()] == 1:
+        #     res = cv_results['estimator'][cv_results['test_score'].argmax()]
+        #     clfs.append([res,cv_results])
+        clf.fit(X_i_curr, y)
+        if clf.score(X_i_curr, y) == 1:
+            clfs.append([clf,0])
         #res = cv_results['estimator'][cv_results['test_score'].argmax()]
         #clfs.append([res,cv_results])
     return clfs

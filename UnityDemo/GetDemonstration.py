@@ -119,6 +119,13 @@ class DemonstrationHandler():
                         if flag == 1:
                             action[-1], action[-2] = action[-2], action[-1]
                         counter = counter + 1
+                    elif demonstration_seq[step-1][x][y] in OBJECTS:
+                        final_demo.insert(step+counter,deepcopy(final_demo[step-1+counter]))
+                        final_demo[step+counter][x][y] =  demonstration_seq[step-1][x][y] + "_highlighted"
+                        action.append((x,y))
+                        if flag == 1:
+                            action[-1], action[-2] = action[-2], action[-1]
+                        counter = counter + 1
                     else:
                         action.append((x,y))
                         flag = 1
