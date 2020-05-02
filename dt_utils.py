@@ -23,7 +23,18 @@ def get_conjunctive_program(path, node_to_features, features, feature_log_probs)
         feature_idx = node_to_features[node_id]
         precondition = features[feature_idx]
         feature_log_p = feature_log_probs[feature_idx]
-        log_p += feature_log_p
+
+        if sign == 'right':
+            log_p += feature_log_p
+        else:
+            assert sign == 'left'
+            #log_p += feature_log_p
+            if log_p == 0:
+                log_p = np.log((1-np.exp(feature_log_p)))
+            else:
+                log_p += np.log((1-np.exp(feature_log_p))) 
+            
+
 
         if sign == 'right':
             program = program + precondition
@@ -51,7 +62,9 @@ def get_disjunctive_program(conjunctive_programs):
 
     return program
 
-def extract_plp_from_dt(estimator, features, feature_log_probs, num_positive_demo):
+def extract_plp_from_dt(clf, features, feature_log_probs, num_positive_demo):
+    estimator = clf[0]
+
     n_nodes = estimator.tree_.node_count
     children_left = estimator.tree_.children_left
     children_right = estimator.tree_.children_right
@@ -92,11 +105,11 @@ def extract_plp_from_dt(estimator, features, feature_log_probs, num_positive_dem
         #     print("Likelihood {}".format("Nan"))
         #     likelihood = float("-inf")
 
-        if total_pos_leaf != num_positive_demo:
-            print("Likelihood {}".format("Nan"))
-            likelihood = float("-inf")
-        else:
-            likelihood = np.log(total_pos_leaf/(total_pos_leaf+total_neg_leaf))
+        # if total_pos_leaf != num_positive_demo:
+        #     print("Likelihood {}".format("Nan"))
+        #     likelihood = float("-inf")
+        # else:
+        likelihood = np.log(total_pos_leaf/(total_pos_leaf+total_neg_leaf))
 
         min_likelihood = 0
         for i in true_leaves_dict.keys():
@@ -108,12 +121,16 @@ def extract_plp_from_dt(estimator, features, feature_log_probs, num_positive_dem
         paths_to_true_leaves = [get_path_to_leaf(leaf, parents) for leaf in true_leaves]
 
         conjunctive_programs = []
-        program_log_prob = 0.
+        program_log_prob = 0
 
         for path in paths_to_true_leaves:
             and_program, log_p = get_conjunctive_program(path, node_to_features, features, feature_log_probs)
             conjunctive_programs.append(and_program)
-            program_log_prob += log_p
+            if program_log_prob == 0:
+                program_log_prob = np.log(np.exp(log_p))
+            else:
+                program_log_prob = np.log(np.exp(log_p)+np.exp(program_log_prob))
+
 
         disjunctive_program = get_disjunctive_program(conjunctive_programs)
 

@@ -21,6 +21,7 @@ import multiprocessing
 import numpy as np
 import time
 import os
+from sklearn.model_selection import cross_validate
 import matplotlib
 import UnityDemo.UnityVisualization
 from numpy.random import default_rng
@@ -483,15 +484,19 @@ def learn_single_batch_decision_trees(y, num_dts, X_i):
     for seed in range(num_dts):
         X_i_curr = X_i
         rng = default_rng()
-        numbers = rng.choice(X_i_curr.shape[1], size=int(X_i_curr.shape[1]/4000*seed), replace=False)
+        numbers = rng.choice(X_i_curr.shape[1], size=int(X_i_curr.shape[1]/(num_dts*5)*seed), replace=False)
         if len(numbers!=0): 
             #niente = np.delete(X_i_curr.toarray(), numbers, axis=1) 
             X_i_curr = lil_matrix(X_i_curr)
             X_i_curr[:,numbers] = False
         clf = DecisionTreeClassifier(random_state=seed*6)
-        clf.fit(X_i_curr, y)
-        clfs.append(clf)
-
+        cv_results = cross_validate(clf,X_i_curr,y, return_estimator=True,cv=3, return_train_score=True)
+        if cv_results['test_score'].max() == 1 and cv_results['train_score'][cv_results['test_score'].argmax()] == 1:
+            res = cv_results['estimator'][cv_results['test_score'].argmax()]
+            clfs.append([res,cv_results])
+        #clf.fit(X_i_curr, y)
+        #res = cv_results['estimator'][cv_results['test_score'].argmax()]
+        #clfs.append([res,cv_results])
     return clfs
 
 def learn_plps(X, y, programs, program_prior_log_probs, num_dts=5, program_generation_step_size=10):
@@ -530,7 +535,7 @@ def learn_plps(X, y, programs, program_prior_log_probs, num_dts=5, program_gener
             plp_priors.append(plp_prior_log_prob)
             total_leaves.append(total_leaf)
             variances.append(variance)
-            clf_tot.append(clf)
+            clf_tot.append(clf[0])
             num_features.append(i)
 
     
@@ -695,7 +700,7 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
         #print("Prior: {}".format(prior))
         particles.append(plp)
         #print("Likelihood: {}".format(likelihood))
-        particle_log_probs.append(prior_scalar + likelihood_scalar)
+        particle_log_probs.append(-prior_scalar + likelihood_scalar)
         #particle_log_probs.append(prior_scalar + curr_variance )
         #print("Posterior: {}".format(prior + 500*likelihood))
 
@@ -712,7 +717,7 @@ def train(base_class_name, demo_numbers, program_generation_step_size, num_progr
     print("Tree Learnt {}".format(clf_tot[map_idx]))
     print("Useful programs {}".format(num_features[map_idx]))
     #TEST Analyzing wrong demonstrations
-    extract_plp_from_dt(clf_tot[map_idx], programs, program_prior_log_probs, len([seq for seq in y if seq==1]))
+    #extract_plp_from_dt(clf_tot[map_idx], programs, program_prior_log_probs, len([seq for seq in y if seq==1]))
 
     top_particles, top_particle_log_probs = select_particles(particles, particle_log_probs, max_num_particles)
     if len(top_particle_log_probs) > 0:
@@ -760,7 +765,7 @@ def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=10,
 
 if __name__  == "__main__":
     #train("TwoPileNim", range(11), 1, 31, 100, 25)
-    policy = train("UnityGame", range(0,3), 20, 300, 500, 5, interactive=True )
+    policy = train("UnityGame", range(0,3), 20, 300, 300, 5, interactive=True )
     #policy = interactive_learning()
     test_results = test(policy, "UnityGame", range(0,2), record_videos=True, interactive = False)
     #print("Test results:", test_results)
