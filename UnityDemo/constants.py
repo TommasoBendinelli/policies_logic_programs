@@ -49,7 +49,7 @@ TOKEN_IMAGES = {
     CUBE_PINK: plt.imread(get_asset_path('cube_pink.png')),
     CUBE_GREY: plt.imread(get_asset_path('cube_grey.png')),
     CUBE_BROWN: plt.imread(get_asset_path('cube_brown.png')),
-    CUBE_BLUE_Clicked: plt.imread(get_asset_path('cube_brown.png')),
+    CUBE_BLUE_Clicked: plt.imread(get_asset_path('cube_selected.png')),
     CUBE_BLACK_Clicked: plt.imread(get_asset_path('cube_selected.png')),
     CUBE_RED_Clicked: plt.imread(get_asset_path('cube_selected.png')),
     CUBE_GREEN_Clicked: plt.imread(get_asset_path('cube_selected.png')),

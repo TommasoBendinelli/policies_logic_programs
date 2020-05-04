@@ -30,8 +30,11 @@ matplotlib.use('TkAgg')
 
 cache_dir = 'cache'
 useCache = False
+cache_program = True
+cache_matrix = True and cache_program
+useCache = False and cache_matrix
 
-@manage_cache(cache_dir, ['.pkl', '.pkl'], enabled = False)
+@manage_cache(cache_dir, ['.pkl', '.pkl'], enabled = cache_program)
 def get_program_set(base_class_name, num_programs):
     """
     Enumerate all programs up to a certain iteration.
@@ -347,8 +350,8 @@ def apply_programs(programs, fn_input):
         x.append(x_i)
     return x
 
-@manage_cache(cache_dir, ['.npz', '.pkl'], enabled = useCache)
-def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number, program_interval=1000, interactive=False):
+@manage_cache(cache_dir, ['.npz', '.pkl'], enabled = cache_matrix)
+def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number, program_interval=1000, interactive=False, specify_task = None):
     """
     un all programs up to some iteration on one demonstration.
 
@@ -386,7 +389,7 @@ def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo
         demonstration = get_demonstrations(base_class_name, demo_numbers=(demo_number,),  max_demo_length=1, interactive=interactive)
         positive_examples, negative_examples  = PlayingWithXYZ.extract_examples_from_demonstration(demonstration)
     elif base_class_name == "UnityGame":
-        demonstration = unity_demontration(demo_number)
+        demonstration = unity_demontration(demo_number, specify_task=specify_task)
         positive_examples, negative_examples  = demonstration.extract_examples_from_demonstration()
         #Visualize demostration 
         #UnityDemo.UnityVisualization.UnityVisualization(negative_examples).visualize_demonstration()
@@ -447,14 +450,14 @@ def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo
     print()
     return X, y
 
-def run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers, interactive=False):
+def run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers, interactive=False, specify_task = None):
     """
     See run_all_programs_on_single_demonstration.
     """
     X, y = None, None
 
     for demo_number in demo_numbers:
-        demo_X, demo_y = run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number, interactive=interactive)
+        demo_X, demo_y = run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number, interactive=interactive, specify_task=specify_task)
 
         if X is None:
             X = demo_X
@@ -676,10 +679,10 @@ def check_negative_example(X_row,positive_mean,threeshold=0.2,n_max=5):
         return skip
 
 @manage_cache(cache_dir, '.pkl', enabled = useCache)
-def train(base_class_name, demo_numbers, program_generation_step_size, num_programs, num_dts, max_num_particles, interactive=False):
+def train(base_class_name, demo_numbers, program_generation_step_size, num_programs, num_dts = None ,max_num_particles = None, interactive=False, specify_task = None):
     programs, program_prior_log_probs = get_program_set(base_class_name, num_programs)
 
-    X, y = run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers, interactive)
+    X, y = run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers, interactive, specify_task)
     #X, y = filter_negative_demonstrations(X,y)
 
     plps, plp_priors,likelihood, total_leaves, variance, clf_tot, num_features = learn_plps(X, y, programs, program_prior_log_probs, num_dts=num_dts,
@@ -767,7 +770,7 @@ def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=10,
 
 if __name__  == "__main__":
     #train("TwoPileNim", range(11), 1, 31, 100, 25)
-    policy = train("UnityGame", range(0,3), 20, 300, 300, 5, interactive=True )
+    policy = train("UnityGame", range(0,3), 50, 1000, num_dts= 1, max_num_particles = 5, interactive=True, specify_task="Put_obj_in_boxes" )
     #policy = interactive_learning()
     test_results = test(policy, "UnityGame", range(0,2), record_videos=True, interactive = False)
     #print("Test results:", test_results)

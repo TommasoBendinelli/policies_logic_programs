@@ -23,7 +23,10 @@ def get_object_types(base_class_name):
     if base_class_name == 'PlayingWithXYZ':
         return ('xyz.EMPTY','xyz.PASS','xyz.X','xyz.Y','xyz.Z','xyz.START')
     if base_class_name == 'UnityGame':
-        return ('unity.P','unity.P_Clicked','unity.S','unity.S_CLicked','unity.B','unity.START','unity.PASS','unity.CLICK',"None")
+        return ('unity.P','unity.P_Clicked','unity.S','unity.S_CLicked','unity.B','unity.START','unity.PASS','unity.CLICK',"None",
+                'unity.CUBE_RED','unity.CUBE_RED_Clicked','unity.CUBE_BLUE','unity.CUBE_BLUE_Clicked','unity.CUBE_GREEN',
+                'unity.CUBE_GREEN_Clicked','unity.CUBE_BLACK','unity.CUBE_BLACK_Clicked','unity.CUBE_BROWN','unity.CUBE_BROWN_Clicked',
+                'unity.CUBE_PINK','unity.CUBE_PINK_Clicked','unity.CUBE_YELLOW','unity.CUBE_YELLOW_Clicked','unity.CUBE_GREY','unity.CUBE_GREY_Clicked')
 
 
     raise Exception("Unknown class name", base_class_name)

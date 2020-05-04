@@ -232,8 +232,14 @@ def expert_xyz_policy(layout, interactive = False):
     right_arrow = tuple(np.argwhere(layout == rfts.RIGHT_ARROW)[0])
     left_arrow = tuple(np.argwhere(layout == rfts.LEFT_ARROW)[0])
 
-def unity_demontration(demo_number):
-    demos = ["demo1.json","demo2.json","demo3.json"]
+def unity_demontration(demo_number, specify_task = None):
+    if specify_task:
+        if specify_task == "Naive_game":
+            demos = ["demo1.json","demo2.json","demo3.json"]
+        elif specify_task == "Put_obj_in_boxes":
+            demos = ["MultipleObJDemo1Box.json","MultipleObJDemo2Box.json","MultipleObJDemo3Box.json"]
+    else:
+        demos = ["MultipleObJDemo1Box.json","MultipleObJDemo2Box.json","MultipleObJDemo3Box.json"]
     return UnityDemo.GetDemonstration.DemonstrationHandler(demos[demo_number], false_demonstration_per_step=0,complete_random=True)
 
 
