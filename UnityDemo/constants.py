@@ -34,9 +34,9 @@ ALL_TOKENS = [EMPTY, P, S, B, PASS, START]
 #ALL_ACTION_TOKENS = [CLICK]
 
 TOKEN_IMAGES = {
-    P: plt.imread(get_asset_path('p.png')),
-    S: plt.imread(get_asset_path('s.png')),
-    B: plt.imread(get_asset_path('b.png')),
+    P: plt.imread(get_asset_path('P.png')),
+    S: plt.imread(get_asset_path('S.png')),
+    B: plt.imread(get_asset_path('B.png')),
     START: plt.imread(get_asset_path('start.png')),
     P_Clicked: plt.imread(get_asset_path('P_highlighted.png')),
     S_CLicked: plt.imread(get_asset_path('S_highlighted.png')),
