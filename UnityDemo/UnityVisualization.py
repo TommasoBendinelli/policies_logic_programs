@@ -39,6 +39,13 @@ class UnityVisualization():
         self.fig.canvas.draw()
         return
 
+    def start_recording_video(self, video_out_path):
+        self.record_video = True
+        self.recorded_video_frames = []
+        self.video_out_path = video_out_path
+    
+    def render(self):
+        return self.get_image(self.current_layout, self.last_action)
 
     def render_onscreen(self):
         for drawing in self.drawings:
@@ -59,6 +66,25 @@ class UnityVisualization():
             if drawing is not None:
                         self.drawings.append(drawing)
     
+    @classmethod
+    def get_image(cls, observation, action, mode='human', close=False):
+        height, width = observation.shape
+
+        fig, ax = cls.initialize_figure(height, width)
+
+        for r in range(height):
+            for c in range(width):
+                token = observation[r, c]
+                cls.draw_token(token, r, c, ax, height, width)
+
+        if action is not None:
+            cls.draw_action(action, ax, height, width)
+
+        im = fig2data(fig)
+        plt.close(fig)
+
+        return im
+
     @classmethod
     def draw_action(cls, action, ax, height, width):
         r, c = action

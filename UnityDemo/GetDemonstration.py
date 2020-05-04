@@ -21,7 +21,7 @@ from collections import defaultdict
 
 class DemonstrationHandler():
 
-    def __init__(self,path,false_demonstration_per_step=250,complete_random=False,reversed_demo=False):
+    def __init__(self,path,false_demonstration_per_step=250,random_action_as_fake=False,reversed_demo=False):
         with open('unity_demonstrations/' + path) as json_file:
             data = json.load(json_file)
         dict_seq = self.demonstration_as_dict_creator(data)
@@ -36,7 +36,7 @@ class DemonstrationHandler():
         else:
             self.demonstrations = [(np.array(final_demo[x]), action[x]) for x in range(len(final_demo))]
         self.false_demonstration_per_step = false_demonstration_per_step
-        self.complete_random = complete_random
+        self.random_action_as_fake = random_action_as_fake
         #self.final_demo = np.array(final_demo)
         #self.action = np.array(action)
 
@@ -169,7 +169,7 @@ class DemonstrationHandler():
         for idx, demonstration_item in enumerate(self.demonstrations):
             #demo_positive_examples, demo_negative_examples = cls.extract_examples_from_demonstration_item_TEST(idx,demonstration)
             #demo_positive_examples, demo_negative_examples = cls.extract_examples_from_demonstration_item(demonstration_item)
-            demo_positive_examples, demo_negative_examples = self.extract_examples_from_demonstration_item_sample(demonstration_item,self.false_demonstration_per_step,self.complete_random)
+            demo_positive_examples, demo_negative_examples = self.extract_examples_from_demonstration_item_sample(demonstration_item,self.false_demonstration_per_step,self.random_action_as_fake)
             positive_examples.extend(demo_positive_examples)
             negative_examples.extend(demo_negative_examples)
         for idx, demonstration_item in enumerate(self.demonstrations_reversed):
@@ -181,7 +181,7 @@ class DemonstrationHandler():
     
 
     @staticmethod
-    def extract_examples_from_demonstration_item_sample(demonstration_item,false_demonstration_per_step, complete_random):
+    def extract_examples_from_demonstration_item_sample(demonstration_item,false_demonstration_per_step, random_action_as_fake):
         state, loc = demonstration_item
 
         positive_examples = [(state, loc)]
@@ -190,7 +190,7 @@ class DemonstrationHandler():
         if not any([x in state for x in PICKED_UP]):
             for elem in TERRAIN:
                 indeces = np.array(np.where(state==elem))
-                rand_vec = np.random.choice(indeces.shape[1],50)
+                rand_vec = np.random.choice(indeces.shape[1],1)
                 for rand in rand_vec:
                     nums = (int(indeces[0,rand]), int(indeces[1,rand]))
                     if nums != (0,0):
@@ -200,13 +200,13 @@ class DemonstrationHandler():
             for elem in OBJECTS:
                 indeces = np.array(np.where(state==elem))
                 if np.array(indeces).shape[1] != 0:
-                    rand_vec = np.random.choice(indeces.shape[1],20)
+                    rand_vec = np.random.choice(indeces.shape[1],1)
                     for rand in rand_vec:
                         nums = (int(indeces[0,rand]), int(indeces[1,rand]))
                         if nums != (0,0):
                             negative_examples.append((state, nums))
 
-        if complete_random == False:
+        if random_action_as_fake == True:
             #Start by considering all actions on objects
             for r in range(state.shape[0]):
                 for c in range(state.shape[1]):

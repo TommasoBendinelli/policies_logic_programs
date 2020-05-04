@@ -240,7 +240,7 @@ def unity_demontration(demo_number, specify_task = None):
             demos = ["MultipleObJDemo1Box.json","MultipleObJDemo2Box.json","MultipleObJDemo3Box.json"]
     else:
         demos = ["MultipleObJDemo1Box.json","MultipleObJDemo2Box.json","MultipleObJDemo3Box.json"]
-    return UnityDemo.GetDemonstration.DemonstrationHandler(demos[demo_number], false_demonstration_per_step=0,complete_random=True)
+    return UnityDemo.GetDemonstration.DemonstrationHandler(demos[demo_number], false_demonstration_per_step=0, random_action_as_fake = False)
 
 
 def get_demonstrations(env_name, demo_numbers=(1, 2, 3, 4), max_demo_length=np.inf, interactive=False):
