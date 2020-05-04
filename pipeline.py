@@ -773,7 +773,7 @@ def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=10,
 
 if __name__  == "__main__":
     #train("TwoPileNim", range(11), 1, 31, 100, 25)
-    policy = train("UnityGame", range(0,3), 50, 1000, num_dts= 500, max_num_particles = 5, interactive=True, specify_task="Put_obj_in_boxes" )
+    policy = train("UnityGame", range(0,4), 50, 1000, num_dts= 500, max_num_particles = 5, interactive=True, specify_task="Put_obj_in_boxes" )
     #policy = interactive_learning()
-    test_results = test(policy, "UnityGame", range(0,2), record_videos=True, interactive = False)
+    test_results = test(policy, "UnityGame", range(0,1), record_videos=True, interactive = False)
     #print("Test results:", test_results)

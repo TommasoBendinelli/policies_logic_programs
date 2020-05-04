@@ -86,7 +86,7 @@ def find_difference(demonstration_seq):
 
 
 
-demo_object = DemonstrationHandler("MultipleObJDemo3Box.json",reversed_demo=False)
+demo_object = DemonstrationHandler("MultipleObJDemo4Box.json",reversed_demo=False)
 # import pickle
 # with open("test_inputs/demo_object_MultipleObJDemo1Box", 'wb') as f:
 #     pickle.dump(demo_object, f)
