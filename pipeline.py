@@ -26,7 +26,7 @@ import matplotlib
 import UnityDemo.UnityVisualization
 from numpy.random import default_rng
 
-matplotlib.use('TkAgg')
+#matplotlib.use('TkAgg')
 
 def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
     # cache_dir = 'cache'
@@ -725,7 +725,7 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
         return policy
     return train
 ## Test (given subset of environments)
-def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=10,
+def test(policy, base_class_name, test_env_nums=range(4), max_num_steps=20,
         record_videos=True, video_format='mp4', interactive = True):
     
     env_names = ['{}{}-v0'.format(base_class_name, i) for i in test_env_nums]
@@ -785,14 +785,14 @@ def apply_programs(programs, fn_input):
 if __name__  == "__main__":
 
     cache_dir = 'cache'
-    useCache = False
-    cache_program = False
-    cache_matrix = False and cache_program
-    useCache = False and cache_matrix
+    useCache = True
+    cache_program = True
+    cache_matrix = True and cache_program
+    useCache = True and cache_matrix
     #train("TwoPileNim", range(11), 1, 31, 100, 25)
     #policy = train("UnityGame", range(0,4), 50, 1000, num_dts= 500, max_num_particles = 5, interactive=True, specify_task="Put_obj_in_boxes" )
     train = pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
-    policy = train("UnityGame", range(0,3), 20, 300, 100, 5, interactive=True, specify_task="Naive_game", test_dimension="reduced" )
+    policy = train("UnityGame", range(0,4), 200, 4000, 200, 5, interactive=True, specify_task="Put_obj_in_boxes")
     #policy = interactive_learning()
-    test_results = test(policy, "UnityGame", range(1,2), record_videos=True, interactive = False)
+    test_results = test(policy, "UnityGame", range(2,3), record_videos=True, interactive = False)
     #print("Test results:", test_results)

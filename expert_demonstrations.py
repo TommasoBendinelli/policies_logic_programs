@@ -10,7 +10,7 @@ import UnityDemo.GetDemonstration
 # from interactiveLearning import InteractiveLearning
 from cache_utils import demonstration_saver
 #from globals_var import action, action_done
-matplotlib.use('TkAgg')
+#matplotlib.use('TkAgg')
 
 # def save_interactive_demos():
 #     if demonstrations != None:
