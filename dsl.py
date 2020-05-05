@@ -127,7 +127,7 @@ def create_grammar_unity(object_types):
         #                  [1]),
         # NEGATIVE_NUM : ([['-1']],#, [NEGATIVE_NUM, '-1']],
         #                  [1]),
-        RADIOUS: ([['1'],['5'],['10']],[0.2,0.5,0.7]),
+        RADIOUS: ([['1'],['5'],['10']],[0.33,0.33,0.33]),
         CARDINAL_DIR : ([["'NORD'"],["'SOUTH'"],["'WEST'"],["'EAST'"]],[0.25,0.25,0.25,0.25]),
         VALUE : (tuple(obj for obj in object_types if obj != "None" and obj != "unity.START" and obj != "unity.CLICK" and obj != 'unity.PASS'), 
                  [1./len(object_types) for _ in object_types if _ != "None"])

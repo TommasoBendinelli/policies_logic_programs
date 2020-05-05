@@ -127,7 +127,7 @@ def extract_plp_from_dt(clf, features, feature_log_probs, num_positive_demo):
             and_program, log_p = get_conjunctive_program(path, node_to_features, features, feature_log_probs)
             conjunctive_programs.append(and_program)
             if program_log_prob == 0:
-                program_log_prob = np.log(np.exp(log_p))
+                program_log_prob = log_p
             else:
                 program_log_prob = np.log(np.exp(log_p)+np.exp(program_log_prob))
 

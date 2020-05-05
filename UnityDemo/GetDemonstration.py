@@ -190,7 +190,7 @@ class DemonstrationHandler():
         if not any([x in state for x in PICKED_UP]):
             for elem in TERRAIN:
                 indeces = np.array(np.where(state==elem))
-                rand_vec = np.random.choice(indeces.shape[1],1)
+                rand_vec = np.random.choice(indeces.shape[1],50)
                 for rand in rand_vec:
                     nums = (int(indeces[0,rand]), int(indeces[1,rand]))
                     if nums != (0,0):
@@ -200,7 +200,7 @@ class DemonstrationHandler():
             for elem in OBJECTS:
                 indeces = np.array(np.where(state==elem))
                 if np.array(indeces).shape[1] != 0:
-                    rand_vec = np.random.choice(indeces.shape[1],1)
+                    rand_vec = np.random.choice(indeces.shape[1],20)
                     for rand in rand_vec:
                         nums = (int(indeces[0,rand]), int(indeces[1,rand]))
                         if nums != (0,0):
