@@ -232,7 +232,7 @@ def expert_xyz_policy(layout, interactive = False):
     right_arrow = tuple(np.argwhere(layout == rfts.RIGHT_ARROW)[0])
     left_arrow = tuple(np.argwhere(layout == rfts.LEFT_ARROW)[0])
 
-def unity_demontration(demo_number, specify_task = None):
+def unity_demontration(demo_number, specify_task = None, test_dimemsion = None):
     if specify_task:
         if specify_task == "Naive_game":
             demos = ["demo1.json","demo2.json","demo3.json"]

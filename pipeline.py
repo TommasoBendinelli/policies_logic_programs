@@ -36,7 +36,7 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
     # useCache = False and cache_matrix
 
     @manage_cache(cache_dir, ['.pkl', '.pkl'], enabled = cache_program)
-    def get_program_set(base_class_name, num_programs):
+    def get_program_set(base_class_name, num_programs, test_dimension = None):
         """
         Enumerate all programs up to a certain iteration.
 
@@ -53,6 +53,8 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
             Log probabilities for each program.
         """
         object_types = get_object_types(base_class_name)
+        if test_dimension == "reduced" and base_class_name=="UnityGame":
+            object_types = get_object_types("UnityGame_reduced")
         if base_class_name == "UnityGame":
             object_types = object_types #
             grammar = create_grammar_unity(object_types) 
@@ -328,7 +330,7 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
 
 
     @manage_cache(cache_dir, ['.npz', '.pkl'], enabled = cache_matrix)
-    def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number, program_interval=1000, interactive=False, specify_task = None):
+    def run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number, program_interval=1000, interactive=False, specify_task = None,test_dimension=None):
         """
         un all programs up to some iteration on one demonstration.
 
@@ -358,7 +360,7 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
 
         print("Running all programs on {}, {}".format(base_class_name, demo_number))
 
-        programs, _ = get_program_set(base_class_name, num_programs)
+        programs, _ = get_program_set(base_class_name, num_programs, test_dimension= test_dimension)
         
 
         #Max demo needed because a demostration is considered as well doing nothing. Hence legth is set
@@ -427,14 +429,14 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
         print()
         return X, y
 
-    def run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers, interactive=False, specify_task = None):
+    def run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers, interactive=False, specify_task = None, test_dimension=None):
         """
         See run_all_programs_on_single_demonstration.
         """
         X, y = None, None
 
         for demo_number in demo_numbers:
-            demo_X, demo_y = run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number, interactive=interactive, specify_task=specify_task)
+            demo_X, demo_y = run_all_programs_on_single_demonstration(base_class_name, num_programs, demo_number, interactive=interactive, specify_task=specify_task, test_dimension=test_dimension)
 
             if X is None:
                 X = demo_X
@@ -656,13 +658,19 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
             return skip
 
     @manage_cache(cache_dir, '.pkl', enabled = useCache)
-    def train(base_class_name, demo_numbers, program_generation_step_size, num_programs, num_dts = None ,max_num_particles = None, interactive=False, specify_task = None):
-        programs, program_prior_log_probs = get_program_set(base_class_name, num_programs)
+    def train(base_class_name, demo_numbers, program_generation_step_size, num_programs, num_dts = None ,max_num_particles = None, interactive=False, specify_task = None, test_dimension=None):
+        programs, program_prior_log_probs = get_program_set(base_class_name, num_programs, test_dimension=test_dimension)
         import json
         with open('debug/programs.json', 'w', encoding='utf-8') as f:
             string_programs = [current_progr.program for current_progr in programs]
             json.dump(string_programs, f, ensure_ascii=False, indent=4)
-        X, y = run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers, interactive, specify_task)
+        X, y = run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers, interactive, specify_task, test_dimension=test_dimension)
+        # with open('debug/X.json', 'w', encoding='utf-8') as f:
+        #     string_programs = X.toarray()
+        #     json.dump(string_programs, f, ensure_ascii=False, indent=4)
+        # with open('debug/y.json', 'w', encoding='utf-8') as f:
+        #     string_programs = y
+        #     json.dump(string_programs, f, ensure_ascii=False, indent=4)
         #X, y = filter_negative_demonstrations(X,y)
 
         plps, plp_priors,likelihood, total_leaves, variance, clf_tot, num_features = learn_plps(X, y, programs, program_prior_log_probs, num_dts=num_dts,
@@ -784,7 +792,7 @@ if __name__  == "__main__":
     #train("TwoPileNim", range(11), 1, 31, 100, 25)
     #policy = train("UnityGame", range(0,4), 50, 1000, num_dts= 500, max_num_particles = 5, interactive=True, specify_task="Put_obj_in_boxes" )
     train = pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
-    policy = train("UnityGame", range(0,3), 20, 300, 100, 5, interactive=True, specify_task="Naive_game" )
+    policy = train("UnityGame", range(0,3), 20, 300, 100, 5, interactive=True, specify_task="Naive_game", test_dimension="reduced" )
     #policy = interactive_learning()
     test_results = test(policy, "UnityGame", range(1,2), record_videos=True, interactive = False)
     #print("Test results:", test_results)
