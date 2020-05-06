@@ -506,25 +506,26 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
         total_leaves = []
         variances = []
         clf_tot = []
-        num_features = []
+        #num_features = []
 
         num_programs = len(programs)
 
-        for i in range(0, num_programs, program_generation_step_size):
-            print("Learning plps with {} programs".format(i))
-            for clf in learn_single_batch_decision_trees(y, num_dts, X[:, :i+1]):
-                plp, plp_prior_log_prob, likelihood_prob, total_leaf, variance = extract_plp_from_dt(clf, programs, program_prior_log_probs, len([seq for seq in y if seq==1]))
-                likelihood.append(likelihood_prob)
-                plps.append(plp)
-                plp_priors.append(plp_prior_log_prob)
-                total_leaves.append(total_leaf)
-                variances.append(variance)
-                clf_tot.append(clf[0])
-                num_features.append(i)
+        # for i in range(0, num_programs, program_generation_step_size):
+        #     print("Learning plps with {} programs".format(i))
+
+        for clf in learn_single_batch_decision_trees(y, num_dts, X):
+            plp, plp_prior_log_prob, likelihood_prob, total_leaf, variance = extract_plp_from_dt(clf, programs, program_prior_log_probs, len([seq for seq in y if seq==1]))
+            likelihood.append(likelihood_prob)
+            plps.append(plp)
+            plp_priors.append(plp_prior_log_prob)
+            total_leaves.append(total_leaf)
+            variances.append(variance)
+            clf_tot.append(clf[0])
+            #num_features.append(i)
 
         
         print("Leart all probabilities!")
-        return plps, plp_priors, likelihood, total_leaves, variances, clf_tot, num_features
+        return plps, plp_priors, likelihood, total_leaves, variances, clf_tot
 
     def compute_likelihood_single_plp(demonstrations, plp):
         """
@@ -686,7 +687,7 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
         #X, y = filter_negative_demonstrations(X,y)
         X,programs,program_prior_log_probs = get_rid_of_pointless_rows(X,programs,program_prior_log_probs)
 
-        plps, plp_priors,likelihood, total_leaves, variance, clf_tot, num_features = learn_plps(X, y, programs, program_prior_log_probs, num_dts=num_dts,
+        plps, plp_priors,likelihood, total_leaves, variance, clf_tot = learn_plps(X, y, programs, program_prior_log_probs, num_dts=num_dts,
             program_generation_step_size=program_generation_step_size)
         #if base_class_name == "PlayingWithXYZ": demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers, max_demo_length=2,interactive=interactive)
         #else: demonstrations = get_demonstrations(base_class_name, demo_numbers=demo_numbers)
@@ -712,7 +713,12 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
 
 
         print("\nDone!")
-        map_idx = np.argmax(particle_log_probs).squeeze()
+        if len(particle_log_probs) != 0:
+            map_idx = np.argmax(particle_log_probs).squeeze()
+        else: 
+            print("No solution found!")
+            policy = PLPPolicy([StateActionProgram("False")], [1.0],base_class=base_class_name)
+            return policy
         #map_idx = np.argmax(variance).squeeze()
         print("MAP program ({}):".format(particle_log_probs[map_idx]))
         print("Likelihood {}".format(likelihood[map_idx]))
@@ -721,7 +727,6 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
         print("Variance: {}".format(variance[map_idx]))
         print(particles[map_idx])
         print("Tree Learnt {}".format(clf_tot[map_idx]))
-        print("Useful programs {}".format(num_features[map_idx]))
         #TEST Analyzing wrong demonstrations
         #extract_plp_from_dt(clf_tot[map_idx], programs, program_prior_log_probs, len([seq for seq in y if seq==1]))
 
@@ -805,7 +810,7 @@ if __name__  == "__main__":
     #train("TwoPileNim", range(11), 1, 31, 100, 25)
     #policy = train("UnityGame", range(0,4), 50, 1000, num_dts= 500, max_num_particles = 5, interactive=True, specify_task="Put_obj_in_boxes" )
     train = pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
-    policy = train("UnityGame", range(0,4), 200, 4000, 200, 5, interactive=True, specify_task="Put_obj_in_boxes")
+    policy = train("UnityGame", range(0,3), 20, 300, 200, 5, interactive=True, specify_task="Naive_game", test_dimension="reduced" )
     #policy = interactive_learning()
     test_results = test(policy, "UnityGame", range(0,2), record_videos=True, interactive = False)
     #print("Test results:", test_results)
