@@ -657,6 +657,18 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
         else:
             return skip
 
+    def get_rid_of_pointless_rows(X,programs,program_prior_log_probs):
+        X = X.toarray()
+        to_delete = np.all(X  == X[0,:], axis = 0)
+        to_keep = np.logical_not(to_delete)
+        X = X[:,to_keep].squeeze()
+        programs = [programs[idx] for idx, x in enumerate(to_keep) if x == True ]
+        program_prior_log_probs = [program_prior_log_probs[idx] for idx, x in enumerate(to_keep) if x == True ]
+        return X, programs, program_prior_log_probs
+
+        
+
+
     @manage_cache(cache_dir, '.pkl', enabled = useCache)
     def train(base_class_name, demo_numbers, program_generation_step_size, num_programs, num_dts = None ,max_num_particles = None, interactive=False, specify_task = None, test_dimension=None):
         programs, program_prior_log_probs = get_program_set(base_class_name, num_programs, test_dimension=test_dimension)
@@ -672,6 +684,7 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
         #     string_programs = y
         #     json.dump(string_programs, f, ensure_ascii=False, indent=4)
         #X, y = filter_negative_demonstrations(X,y)
+        X,programs,program_prior_log_probs = get_rid_of_pointless_rows(X,programs,program_prior_log_probs)
 
         plps, plp_priors,likelihood, total_leaves, variance, clf_tot, num_features = learn_plps(X, y, programs, program_prior_log_probs, num_dts=num_dts,
             program_generation_step_size=program_generation_step_size)
@@ -794,5 +807,5 @@ if __name__  == "__main__":
     train = pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
     policy = train("UnityGame", range(0,3), 20, 300, 100, 5, interactive=True, specify_task="Naive_game", test_dimension="reduced" )
     #policy = interactive_learning()
-    test_results = test(policy, "UnityGame", range(1,2), record_videos=True, interactive = False)
+    test_results = test(policy, "UnityGame", range(0,2), record_videos=True, interactive = False)
     #print("Test results:", test_results)

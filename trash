@@ -6,16 +6,16 @@ Generating 300 programs
 
 Done.
 Total number of squares 2500: current 2498
-Total time for generating demonstrations: 0.004390716552734375
-Iteration 0 of 300Total time for generating programs: 4.761162996292114
+Total time for generating demonstrations: 0.004932880401611328
+Iteration 0 of 300Total time for generating programs: 4.040309906005859
 
 Running all programs on UnityGame, 1
 Generating 300 programs
 
 Done.
 Total number of squares 2500: current 2498
-Total time for generating demonstrations: 0.0042340755462646484
-Iteration 0 of 300Total time for generating programs: 5.210969924926758
+Total time for generating demonstrations: 0.005522966384887695
+Iteration 0 of 300Total time for generating programs: 4.049031019210815
 
 Running all programs on UnityGame, 2
 Generating 300 programs
@@ -23,8 +23,8 @@ Generating 300 programs
 Done.
 Total number of squares 2500: current 2498
 Total number of squares 2500: current 2498
-Total time for generating demonstrations: 0.010926961898803711
-Iteration 0 of 300Total time for generating programs: 7.865537166595459
+Total time for generating demonstrations: 0.006721973419189453
+Iteration 0 of 300Total time for generating programs: 7.5868682861328125
 
 Learning plps with 0 programs
 Learning plps with 20 programs
@@ -101,42 +101,6 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
@@ -158,94 +122,6 @@ Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -285,14 +161,6 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
@@ -305,7 +173,91 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -321,43 +273,7 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -378,6 +294,110 @@ Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
 Min Likelihood: 0
 Learning plps with 180 programs
 Sum of total positive leaves 11.0
@@ -454,6 +474,122 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
@@ -490,6 +626,42 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
@@ -503,6 +675,42 @@ Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -514,115 +722,7 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -666,63 +766,11 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
 Min Likelihood: 0
 Learning plps with 200 programs
 Sum of total positive leaves 11.0
@@ -815,7 +863,63 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -895,179 +999,127 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 4
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -1132,11 +1184,151 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -1172,110 +1364,6 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
@@ -1300,99 +1388,7 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 4
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 4
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -1408,7 +1404,95 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
 Min Likelihood: 0
 Learning plps with 240 programs
 Sum of total positive leaves 11.0
@@ -1513,6 +1597,194 @@ Toal number of leaf nodes 6
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 7
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
 Toal number of leaf nodes 6
 Min Likelihood: 0
 Sum of total positive leaves 11.0
@@ -1549,151 +1821,15 @@ Toal number of leaf nodes 4
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
+Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
+Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -1725,31 +1861,7 @@ Toal number of leaf nodes 6
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
 Min Likelihood: 0
 Learning plps with 260 programs
 Sum of total positive leaves 11.0
@@ -1778,7 +1890,7 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
+Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -1790,35 +1902,7 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
+Toal number of leaf nodes 6
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -1871,6 +1955,38 @@ Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -1902,62 +2018,6 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
@@ -1967,98 +2027,6 @@ Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -2102,7 +2070,175 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
 Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
 Min Likelihood: 0
 Learning plps with 280 programs
 Sum of total positive leaves 11.0
@@ -2195,6 +2331,82 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
@@ -2227,7 +2439,15 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -2240,6 +2460,26 @@ Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Min Likelihood: 0
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -2267,86 +2507,6 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
@@ -2387,35 +2547,7 @@ Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Min Likelihood: 0
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
 Min Likelihood: 0
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
@@ -2457,12 +2589,12 @@ Likelihood 0.0
 Prior -6.036918049292571
 Total leaves 3
 Variance: 0
-((is_finish(loc) and at_all_cell_with_value( unity.S , lambda cell,o : is_around( 1 , unity.B , cell, o) , s) and not (at_action_cell( lambda cell,o : is_there_on( 'NORD' , unity.S_CLicked , cell, o) , loc, s)))) or ((not (is_finish(loc)) and at_cell_with_value( unity.S_CLicked , lambda cell,o : is_around( 1 , unity.S_CLicked , cell, o) , s) and at_action_cell( lambda cell,o : is_around( 5 , unity.B , cell, o) , loc, s) and not (at_action_cell( lambda cell,o : is_around( 1 , unity.S , cell, o) , loc, s)))) or ((not (is_finish(loc)) and not (at_cell_with_value( unity.S_CLicked , lambda cell,o : is_around( 1 , unity.S_CLicked , cell, o) , s)) and at_action_cell( lambda cell,o : is_around( 1 , unity.S , cell, o) , loc, s) and not (at_action_cell( lambda cell,o : is_around( 5 , unity.B , cell, o) , loc, s))))
+((is_finish(loc) and at_all_cell_with_value( unity.S , lambda cell,o : is_around( 5 , unity.B , cell, o) , s) and not (at_action_cell( lambda cell,o : is_there_on( 'EAST' , unity.S_CLicked , cell, o) , loc, s)))) or ((not (is_finish(loc)) and at_cell_with_value( unity.S_CLicked , lambda cell,o : is_around( 1 , unity.S_CLicked , cell, o) , s) and at_action_cell( lambda cell,o : is_around( 1 , unity.B , cell, o) , loc, s) and not (at_action_cell( lambda cell,o : is_around( 1 , unity.S , cell, o) , loc, s)))) or ((not (is_finish(loc)) and not (at_cell_with_value( unity.S_CLicked , lambda cell,o : is_around( 1 , unity.S_CLicked , cell, o) , s)) and at_action_cell( lambda cell,o : is_around( 1 , unity.S , cell, o) , loc, s) and not (at_action_cell( lambda cell,o : is_around( 1 , unity.B , cell, o) , loc, s))))
 Tree Learnt DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
             max_features=None, max_leaf_nodes=None,
             min_impurity_decrease=0.0, min_impurity_split=None,
             min_samples_leaf=1, min_samples_split=2,
-            min_weight_fraction_leaf=0.0, presort=False, random_state=294,
+            min_weight_fraction_leaf=0.0, presort=False, random_state=498,
             splitter='best')
-Useful programs 160
-top_particle_probs: [0.2 0.2 0.2 0.2 0.2]
+Useful programs 180
+top_particle_probs: [0.20008649 0.20006749 0.20006617 0.19988992 0.19988992]

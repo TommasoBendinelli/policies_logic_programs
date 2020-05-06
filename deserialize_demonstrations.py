@@ -86,7 +86,7 @@ def find_difference(demonstration_seq):
 
 
 
-demo_object = DemonstrationHandler("MultipleObJDemo4Box.json",reversed_demo=False)
+demo_object = DemonstrationHandler("Test3.json",reversed_demo=False)
 # import pickle
 # with open("test_inputs/demo_object_MultipleObJDemo1Box", 'wb') as f:
 #     pickle.dump(demo_object, f)
@@ -96,7 +96,8 @@ final_demo = demo_object()
 # final_demo = list(zip(*final_demo))[0]
 # demo_object.other_representation(final_demo)
 interaction = UnityVisualization(final_demo)
-interaction.visualize_demonstration()
+interaction.save_demostration()
+#interaction.visualize_demonstration()
 
 
 

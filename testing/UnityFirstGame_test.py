@@ -107,3 +107,45 @@ class TestLayers(unittest.TestCase):
             obs = new_obs
 
         env.close()
+
+
+class TestSecondGame(unittest.TestCase):
+
+    @staticmethod
+    def check_equality(obj):
+        if obj in ["S","CBLA","CB"]:
+            return True
+        else:
+            return False
+
+    def test_put_black_blue_siemens_in_box(self):
+        results = ["S","B",None]
+        cache_dir = 'cache'
+        useCache = True
+        cache_program = True
+        cache_matrix = True and cache_program
+        useCache = True and cache_matrix
+        train = pipeline.pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
+        save_stdout = sys.stdout
+        sys.stdout = open('trash', 'w')
+        policy = train("UnityGame", range(0,4), 200, 4000, 200, 5, interactive=True, specify_task="Put_obj_in_boxes")
+        sys.stdout = save_stdout
+        env_names = 'UnityGame2-v0'
+        env = gym.make(env_names)
+        obs = env.reset()
+        total_reward = 0.
+        for t in range(17):
+            action = policy(obs)
+            print(action)
+            if t%2 == 1:
+                self.assertEqual(obs[action],"B")
+            if t%2 == 0 & t != 16:
+                res = self.check_equality(action)
+                self.assertEqual(True,True)
+            if t == 16:
+                self.assertEqual(obs[action],None)
+            new_obs, reward, done, debug_info = env.step(action)
+            obs = new_obs
+
+        env.close()
+
