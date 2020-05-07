@@ -7,7 +7,7 @@ from UnityDemo.constants import *
 import imageio
 
 import matplotlib
-matplotlib.use('TkAgg')
+#matplotlib.use('TkAgg')
 class UnityVisualization():
     fig_scale = 0.2
 
