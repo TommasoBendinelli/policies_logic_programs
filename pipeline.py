@@ -465,7 +465,16 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
         clfs = []
         numbers = [1]
         for seed in range(num_dts):
-            clf = DecisionTreeClassifier(splitter="random", max_features="log2", random_state=seed*6)
+            #X_i_curr = X_i
+            #rng = default_rng()
+            #numbers = rng.choice(X_i_curr.shape[1], size=int(X_i_curr.shape[1]/(num_dts*2)*seed), replace=False)
+            #rng = default_rng()
+            #numbers = rng.choice(X_i_curr.shape[1], size=int(X_i_curr.shape[1]/(num_dts*5)*seed), replace=False)
+            # if len(numbers!=0): 
+            #     #niente = np.delete(X_i_curr.toarray(), numbers, axis=1) 
+            #      X_i_curr = lil_matrix(X_i_curr)
+            #      X_i_curr[:,numbers] = False
+            clf = DecisionTreeClassifier(splitter="random", max_features="log2")
             cv_results = cross_validate(clf,X_i,y, return_estimator=True,cv=3, return_train_score=True)
             if cv_results['test_score'].max() == 1 and cv_results['train_score'][cv_results['test_score'].argmax()] == 1:
                  res = cv_results['estimator'][cv_results['test_score'].argmax()]
