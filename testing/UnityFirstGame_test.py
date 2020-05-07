@@ -4,10 +4,16 @@ import gym
 import numpy as np
 import sys
 import os
+import time
 
 
 class TestFirstGame(unittest.TestCase):
+    def setUp(self):
+        self.startTime = time.time()
 
+    def tearDown(self):
+        t = time.time() - self.startTime
+        print('%s: %.3f' % (self.id(), t))
     def test_layer1(self):
         results = ["S","B",None]
         cache_dir = 'cache'
@@ -67,7 +73,7 @@ class TestFirstGame(unittest.TestCase):
         train = pipeline.pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
         save_stdout = sys.stdout
         sys.stdout = open('trash', 'w')
-        policy = train("UnityGame", range(0,3), 200, 4000, 4000, 5, interactive=True, specify_task="Naive_game" )
+        policy = train("UnityGame", range(0,3), 200, 4000, 300, 5, interactive=True, specify_task="Naive_game" )
         sys.stdout = save_stdout
         env_names = 'UnityGame0-v0'
         env = gym.make(env_names)
@@ -93,7 +99,7 @@ class TestFirstGame(unittest.TestCase):
         train = pipeline.pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
         save_stdout = sys.stdout
         sys.stdout = open('trash', 'w')
-        policy = train("UnityGame", range(0,3), 200, 4000, 4000, 5, interactive=True, specify_task="Naive_game" )
+        policy = train("UnityGame", range(0,3), 200, 4000, 300, 5, interactive=True, specify_task="Naive_game" )
         sys.stdout = save_stdout
         env_names = 'UnityGame1-v0'
         env = gym.make(env_names)
@@ -109,7 +115,12 @@ class TestFirstGame(unittest.TestCase):
         env.close()
     
 class TestSecondGame(unittest.TestCase):
+    def setUp(self):
+        self.startTime = time.time()
 
+    def tearDown(self):
+        t = time.time() - self.startTime
+        print('%s: %.3f' % (self.id(), t))
     @staticmethod
     def check_equality(obj):
         if obj in ["S","CBLA","CB"]:
@@ -127,7 +138,7 @@ class TestSecondGame(unittest.TestCase):
         train = pipeline.pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
         save_stdout = sys.stdout
         sys.stdout = open('trash', 'w')
-        policy = train("UnityGame", range(0,4), 200, 4000, 4000, 5, interactive=True, specify_task="Put_obj_in_boxes")
+        policy = train("UnityGame", range(0,4), 200, 4000, 300, 5, interactive=True, specify_task="Put_obj_in_boxes")
         sys.stdout = save_stdout
         env_names = 'UnityGame2-v0'
         env = gym.make(env_names)

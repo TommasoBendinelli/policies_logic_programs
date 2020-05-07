@@ -474,7 +474,7 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
             #     #niente = np.delete(X_i_curr.toarray(), numbers, axis=1) 
             #      X_i_curr = lil_matrix(X_i_curr)
             #      X_i_curr[:,numbers] = False
-            clf = DecisionTreeClassifier(splitter="random", max_features="log2", random_state=seed*6)
+            clf = DecisionTreeClassifier(splitter="random", max_features="log2")
             cv_results = cross_validate(clf,X_i,y, return_estimator=True,cv=3, return_train_score=True)
             if cv_results['test_score'].max() == 1 and cv_results['train_score'][cv_results['test_score'].argmax()] == 1:
                  res = cv_results['estimator'][cv_results['test_score'].argmax()]
