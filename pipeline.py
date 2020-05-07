@@ -449,6 +449,45 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
 
         return X, y
 
+    def new_learn_single_batch_decision_trees(y, num_dts, X_i):
+        """
+        Parameters
+        ----------
+        y : [ bool ]
+        num_dts : int
+        X_i : csr_matrix
+
+        Returns
+        -------
+        clfs : [ DecisionTreeClassifier ]
+        """
+
+        clfs = []
+        numbers = [1]
+        for seed in range(num_dts):
+            #X_i_curr = X_i
+            #rng = default_rng()
+            #numbers = rng.choice(X_i_curr.shape[1], size=int(X_i_curr.shape[1]/(num_dts*2)*seed), replace=False)
+            #rng = default_rng()
+            #numbers = rng.choice(X_i_curr.shape[1], size=int(X_i_curr.shape[1]/(num_dts*5)*seed), replace=False)
+            # if len(numbers!=0): 
+            #     #niente = np.delete(X_i_curr.toarray(), numbers, axis=1) 
+            #      X_i_curr = lil_matrix(X_i_curr)
+            #      X_i_curr[:,numbers] = False
+            clf = DecisionTreeClassifier(splitter="random", max_features="log2", random_state=seed*6)
+            cv_results = cross_validate(clf,X_i,y, return_estimator=True,cv=3, return_train_score=True)
+            if cv_results['test_score'].max() == 1 and cv_results['train_score'][cv_results['test_score'].argmax()] == 1:
+                 res = cv_results['estimator'][cv_results['test_score'].argmax()]
+                 clfs.append([res,cv_results])
+
+            # clf.fit(X_i_curr, y)
+            # if clf.score(X_i_curr, y) == 1:
+            #     clfs.append([clf,0])
+            #res = cv_results['estimator'][cv_results['test_score'].argmax()]
+            #clfs.append([res,cv_results])
+        return clfs
+
+
     def learn_single_batch_decision_trees(y, num_dts, X_i):
         """
         Parameters
@@ -471,7 +510,7 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
                 #niente = np.delete(X_i_curr.toarray(), numbers, axis=1) 
                 X_i_curr = lil_matrix(X_i_curr)
                 X_i_curr[:,numbers] = False
-            clf = DecisionTreeClassifier(random_state=seed*6)
+            clf = DecisionTreeClassifier()
             # cv_results = cross_validate(clf,X_i_curr,y, return_estimator=True,cv=10, return_train_score=True)
             # if cv_results['test_score'].max() == 1 and cv_results['train_score'][cv_results['test_score'].argmax()] == 1:
             #     res = cv_results['estimator'][cv_results['test_score'].argmax()]
@@ -513,7 +552,7 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
         # for i in range(0, num_programs, program_generation_step_size):
         #     print("Learning plps with {} programs".format(i))
 
-        for clf in learn_single_batch_decision_trees(y, num_dts, X):
+        for clf in new_learn_single_batch_decision_trees(y, num_dts, X):
             plp, plp_prior_log_prob, likelihood_prob, total_leaf, variance = extract_plp_from_dt(clf, programs, program_prior_log_probs, len([seq for seq in y if seq==1]))
             likelihood.append(likelihood_prob)
             plps.append(plp)
@@ -803,14 +842,13 @@ def apply_programs(programs, fn_input):
 if __name__  == "__main__":
 
     cache_dir = 'cache'
-    useCache = True
     cache_program = True
     cache_matrix = True and cache_program
-    useCache = True and cache_matrix
+    useCache = False and cache_matrix
     #train("TwoPileNim", range(11), 1, 31, 100, 25)
     #policy = train("UnityGame", range(0,4), 50, 1000, num_dts= 500, max_num_particles = 5, interactive=True, specify_task="Put_obj_in_boxes" )
     train = pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
-    policy = train("UnityGame", range(0,3), 20, 300, 200, 5, interactive=True, specify_task="Naive_game", test_dimension="reduced" )
+    policy = train("UnityGame", range(0,3), 200, 300, 300, 5, interactive=True, specify_task="Naive_game",test_dimension="reduced" )
     #policy = interactive_learning()
-    test_results = test(policy, "UnityGame", range(0,2), record_videos=True, interactive = False)
+    test_results = test(policy, "UnityGame", range(1,2), record_videos=True, interactive = False)
     #print("Test results:", test_results)

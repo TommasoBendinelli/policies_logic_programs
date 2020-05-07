@@ -115,7 +115,7 @@ def extract_plp_from_dt(clf, features, feature_log_probs, num_positive_demo):
         for i in true_leaves_dict.keys():
             min_likelihood = min(min_likelihood,true_leaves_dict[i])
             variance = (true_leaves_dict[i] - likelihood)**2+variance
-        print("Min Likelihood: {}".format(min_likelihood))
+        #print("Min Likelihood: {}".format(min_likelihood))
         
 
         paths_to_true_leaves = [get_path_to_leaf(leaf, parents) for leaf in true_leaves]
@@ -136,6 +136,7 @@ def extract_plp_from_dt(clf, features, feature_log_probs, num_positive_demo):
 
         if not isinstance(disjunctive_program, StateActionProgram):
             disjunctive_program = StateActionProgram(disjunctive_program)
+        print("Likelihood: {}".format(program_log_prob))
     except:
         return None, -1, float("-inf"), 0, float("-inf")
     return disjunctive_program, program_log_prob, likelihood, len(true_leaves), min_likelihood
