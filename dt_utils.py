@@ -63,7 +63,7 @@ def get_disjunctive_program(conjunctive_programs):
     return program
 
 def extract_plp_from_dt(clf, features, feature_log_probs, num_positive_demo):
-    estimator = clf[0]
+    estimator = clf
 
     n_nodes = estimator.tree_.node_count
     children_left = estimator.tree_.children_left
