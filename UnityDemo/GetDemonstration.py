@@ -172,10 +172,13 @@ class DemonstrationHandler():
             demo_positive_examples, demo_negative_examples = self.extract_examples_from_demonstration_item_sample(demonstration_item,self.false_demonstration_per_step,self.random_action_as_fake)
             positive_examples.extend(demo_positive_examples)
             negative_examples.extend(demo_negative_examples)
+
+        #Inverse   
         for idx, demonstration_item in enumerate(self.demonstrations_reversed):
             state, loc = demonstration_item
             negative_examples.extend([(state, loc)])
-        
+
+
         print("Total time for generating demonstrations: {}".format(time.time()-start))
         return positive_examples, negative_examples
     
