@@ -26,9 +26,11 @@ import matplotlib
 import UnityDemo.UnityVisualization
 from numpy.random import default_rng
 
-#matplotlib.use('TkAgg')
+import platform 
+if platform.system() == 'Darwin':
+    matplotlib.use('TkAgg')
 
-def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
+def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache,is_logging_enabled=True):
     # cache_dir = 'cache'
     # #useCache = False
     # cache_program = False
@@ -724,10 +726,12 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache):
     @manage_cache(cache_dir, '.pkl', enabled = useCache)
     def train(base_class_name, demo_numbers, program_generation_step_size, num_programs, num_dts = None ,max_num_particles = None, interactive=False, specify_task = None, test_dimension=None):
         programs, program_prior_log_probs = get_program_set(base_class_name, num_programs, test_dimension=test_dimension)
-        import json
-        with open('debug/programs.json', 'w', encoding='utf-8') as f:
-            string_programs = [current_progr.program for current_progr in programs]
-            json.dump(string_programs, f, ensure_ascii=False, indent=4)
+
+        if is_logging_enabled:
+            import json
+            with open('debug/programs.json', 'w', encoding='utf-8') as f:
+                string_programs = [current_progr.program for current_progr in programs]
+                json.dump(string_programs, f, ensure_ascii=False, indent=4)
         X, y = run_all_programs_on_demonstrations(base_class_name, num_programs, demo_numbers, interactive, specify_task, test_dimension=test_dimension)
         # with open('debug/X.json', 'w', encoding='utf-8') as f:
         #     string_programs = X.toarray()
@@ -884,7 +888,7 @@ if __name__  == "__main__":
     #train("TwoPileNim", range(11), 1, 31, 100, 25)
     #policy = train("UnityGame", range(0,4), 50, 1000, num_dts= 500, max_num_particles = 5, interactive=True, specify_task="Put_obj_in_boxes" )
     train = pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
-    policy = train("UnityGame", range(0,3), 200, 300, 300, 5, interactive=True, specify_task="Naive_game",test_dimension="reduced" )
+    policy = train("UnityGame", range(0,3), 200, 300, 300, 5, interactive=True, specify_task="Game0",test_dimension="reduced" )
     #policy = interactive_learning()
     test_results = test(policy, "UnityGame", range(1,2), record_videos=True, interactive = False)
     #print("Test results:", test_results)
