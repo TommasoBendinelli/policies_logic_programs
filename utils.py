@@ -56,7 +56,8 @@ def run_single_episode(env, policy, record_video=False, video_out_path=None, max
             total_reward += reward
 
             obs = new_obs
-
+            if action == (0,0):
+                break
             if done:
                 break
 

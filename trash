@@ -6,16 +6,16 @@ Generating 300 programs
 
 Done.
 Total number of squares 2500: current 2498
-Total time for generating demonstrations: 0.0069408416748046875
-Iteration 0 of 300Total time for generating programs: 5.207173109054565
+Total time for generating demonstrations: 0.00393986701965332
+Iteration 0 of 300Total time for generating programs: 4.471147060394287
 
 Running all programs on UnityGame, 1
 Generating 300 programs
 
 Done.
 Total number of squares 2500: current 2498
-Total time for generating demonstrations: 0.006106853485107422
-Iteration 0 of 300Total time for generating programs: 4.18087100982666
+Total time for generating demonstrations: 0.004437923431396484
+Iteration 0 of 300Total time for generating programs: 3.8054280281066895
 
 Running all programs on UnityGame, 2
 Generating 300 programs
@@ -23,29 +23,57 @@ Generating 300 programs
 Done.
 Total number of squares 2500: current 2498
 Total number of squares 2500: current 2498
-Total time for generating demonstrations: 0.007132053375244141
-Iteration 0 of 300Total time for generating programs: 7.33929705619812
+Total time for generating demonstrations: 0.009426116943359375
+Iteration 0 of 300Total time for generating programs: 6.673682928085327
 
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.7437535604808305
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.7437535604808305
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.746346517942007
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.711626930447049
+Likelihood: -4.746548853752841
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
 Likelihood: -4.711795366111451
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.714297835196331
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.7465730159888775
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.7437535604808305
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.714324897845457
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.7437593563911475
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.714297835196331
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.743729466272377
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.743785422733397
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.746522715279376
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.711599940712678
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
@@ -53,15 +81,19 @@ Likelihood: -4.743734783073345
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.711795366111451
+Likelihood: -4.74375733726763
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.746520904847639
+Likelihood: -4.714493788595795
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
 Likelihood: -4.711598656236873
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.746522715279376
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
@@ -72,48 +104,64 @@ Toal number of leaf nodes 5
 Likelihood: -4.746545066408369
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.746548853752841
+Toal number of leaf nodes 3
+Likelihood: -6.036816483131892
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.743760682848073
+Likelihood: -4.746545066408369
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.746318574691218
+Likelihood: -4.743729466272377
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.7437553659094
+Likelihood: -4.714297835196331
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.711594792049817
+Likelihood: -4.743729466272377
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.711626930447049
+Likelihood: -4.7437588774099035
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.743533015792028
+Likelihood: -4.743729466272377
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Likelihood: -6.035833659306641
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.743733456650773
+Likelihood: -4.743729466272377
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.746545066408369
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.743734783073345
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
 Likelihood: -4.746520904847639
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.7437535604808305
+Toal number of leaf nodes 6
+Likelihood: -4.4890617470775025
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.746545066408369
+Likelihood: -4.743555565436024
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.746320384756686
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
@@ -121,19 +169,79 @@ Likelihood: -4.746522715279376
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
+Likelihood: -4.746520904847639
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.713763244123325
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.743760682848073
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
 Likelihood: -4.743734783073345
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.746318574691218
+Likelihood: -4.714297835196331
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.7437535604808305
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.743527700063706
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 6
-Likelihood: -4.961188096163967
+Likelihood: -4.538820759163956
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.743760682848073
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 7
+Likelihood: -4.567871652165348
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
 Likelihood: -6.035840231715961
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.743760682848073
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Likelihood: -6.035833659306641
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Likelihood: -4.734927166540403
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Likelihood: -4.711779290335016
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.711594575809096
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.714493788595795
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.743785422733397
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Likelihood: -6.035833659306641
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
@@ -141,59 +249,11 @@ Likelihood: -4.746520904847639
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.711594792049817
+Likelihood: -4.711596540341624
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.743734783073345
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Likelihood: -4.745929573513758
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.745766593402358
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.743533015792028
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.713737948709187
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.74375733726763
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.743760682848073
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.711594792049817
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Likelihood: -4.735500837182575
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.743733456650773
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.743729466272377
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.743731048354645
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.743760682848073
+Likelihood: -4.7437535604808305
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
@@ -201,91 +261,35 @@ Likelihood: -6.035833659306641
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.743731048354645
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.743731048354645
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Likelihood: -4.96111851645273
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
 Likelihood: -4.74375733726763
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Likelihood: -4.711621743370723
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.743729466272377
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.711621781645226
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.7437588774099035
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.746545066408369
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.711797114753956
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Likelihood: -4.743528241494692
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.7437588774099035
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.743734783073345
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
-Likelihood: -6.035935125689652
+Likelihood: -6.035833659306641
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.743786749224898
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.7437588774099035
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.743762654216785
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 6
-Likelihood: -4.924625950496479
+Likelihood: -4.732745208070227
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
+Likelihood: -6.03212654524727
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.745965026747551
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.711599940712678
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.961275217582151
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.711601689013487
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.743734783073345
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.74375333717305
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -4.743533015792028
+Likelihood: -4.746318574691218
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
@@ -296,12 +300,12 @@ Toal number of leaf nodes 3
 Likelihood: -6.036816483131892
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Likelihood: -6.035833659306641
+Toal number of leaf nodes 4
+Likelihood: -6.035792593186126
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Likelihood: -6.035833659306641
+Toal number of leaf nodes 5
+Likelihood: -4.711626930447049
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
@@ -309,108 +313,184 @@ Likelihood: -6.036918049292571
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.743786749224898
+Likelihood: -4.746520904847639
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 6
-Likelihood: -4.758446971128775
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 4
-Likelihood: -5.497220111008
+Likelihood: -4.908843600093544
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.714299588220244
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Likelihood: -6.035840231715961
+Likelihood: -4.758453167342755
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
-Likelihood: -4.74375333717305
+Likelihood: -4.746346517942007
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 6
-Likelihood: -0.29180466408049555
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 3
-Likelihood: -6.03682306200393
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 4
-Likelihood: -6.0330772259979115
+Likelihood: -4.746447521456119
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
 Likelihood: -6.035833659306641
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Likelihood: -4.565594738039874
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 5
-Likelihood: -5.49679250682539
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Likelihood: -4.743718185562653
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Likelihood: -4.96093026180956
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Likelihood: -4.714399103491596
-Sum of total positive leaves 11.0
-Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Likelihood: -4.746509592604694
+Toal number of leaf nodes 3
+Likelihood: -6.035833659306641
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 4
-Likelihood: -6.0367753766316055
+Likelihood: -6.032977504963854
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 3
+Likelihood: -6.035833659306641
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.7437535604808305
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.746522715279376
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.74375733726763
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.726042545145567
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Likelihood: -4.51647851791851
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Likelihood: -4.747919818679572
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Likelihood: -4.703796071728463
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.743533015792028
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.743734783073345
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.746520904847639
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
+Likelihood: -6.088502309385921
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 7
+Likelihood: -4.65540062399138
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.743762654216785
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.7437535229815495
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
+Likelihood: -6.035786024436786
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Likelihood: -4.653099334370097
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 7
+Likelihood: -0.2917721281841987
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.961309861968051
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
+Likelihood: -6.03212654524727
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 7
+Likelihood: -4.961181452511732
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Likelihood: -4.921315872776558
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 4
+Likelihood: -6.035792593186126
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 5
 Likelihood: -4.743729466272377
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Likelihood: -4.74372486931463
+Toal number of leaf nodes 3
+Likelihood: -6.036816483131892
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -4.7118223611208885
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 7
+Likelihood: -4.960641764159759
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 6
-Likelihood: -4.911891397042342
+Likelihood: -4.883447666265792
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Likelihood: -4.735276832850811
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 6
+Likelihood: -4.74373001824581
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 3
 Likelihood: -6.03682306200393
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
-Toal number of leaf nodes 6
-Likelihood: -4.746220471727228
+Toal number of leaf nodes 7
+Likelihood: -4.960664772887239
+Sum of total positive leaves 11.0
+Sum of total negative leaves 0.0
+Toal number of leaf nodes 5
+Likelihood: -5.921395787742876
 Sum of total positive leaves 11.0
 Sum of total negative leaves 0.0
 Toal number of leaf nodes 6
-Likelihood: -4.744466765539777
+Likelihood: -4.979510203066149
 Leart all probabilities!
 
 Done!
-MAP program (6.036918049292571):
+MAP program (6.088502309385921):
 Likelihood 0.0
-Prior -6.036918049292571
-Total leaves 3
+Prior -6.088502309385921
+Total leaves 4
 Variance: 0
-((is_finish(loc) and at_all_cell_with_value( unity.S , lambda cell,o : is_around( 5 , unity.B , cell, o) , s) and not (at_action_cell( lambda cell,o : is_there_on( 'NORD' , unity.S_CLicked , cell, o) , loc, s)))) or ((not (is_finish(loc)) and at_cell_with_value( unity.S_CLicked , lambda cell,o : is_around( 1 , unity.S_CLicked , cell, o) , s) and at_action_cell( lambda cell,o : is_around( 1 , unity.B , cell, o) , loc, s) and not (at_action_cell( lambda cell,o : is_around( 1 , unity.S , cell, o) , loc, s)))) or ((not (is_finish(loc)) and not (at_cell_with_value( unity.S_CLicked , lambda cell,o : is_around( 1 , unity.S_CLicked , cell, o) , s)) and at_action_cell( lambda cell,o : is_around( 1 , unity.S , cell, o) , loc, s) and not (at_action_cell( lambda cell,o : is_around( 1 , unity.B , cell, o) , loc, s))))
+((is_finish(loc) and at_all_cell_with_value( unity.B , lambda cell,o : is_around( 10 , unity.S , cell, o) , s) and at_all_cell_with_value( unity.S , lambda cell,o : is_around( 10 , unity.S , cell, o) , s) and not (at_cell_with_value( unity.S_CLicked , lambda cell,o : is_there_on( 'WEST' , unity.S , cell, o) , s)))) or ((not (is_finish(loc)) and at_all_cell_with_value( unity.S_CLicked , lambda cell,o : is_around( 1 , unity.S_CLicked , cell, o) , s) and at_action_cell( lambda cell,o : is_around( 10 , unity.B , cell, o) , loc, s) and not (at_action_cell( lambda cell,o : is_around( 1 , unity.S , cell, o) , loc, s)) and not (at_action_cell( lambda cell,o : is_around( 1 , unity.S_CLicked , cell, o) , loc, s)))) or ((not (is_finish(loc)) and not (at_all_cell_with_value( unity.S_CLicked , lambda cell,o : is_around( 1 , unity.S_CLicked , cell, o) , s)) and at_action_cell( lambda cell,o : is_around( 1 , unity.S , cell, o) , loc, s) and at_all_cell_with_value( unity.B , lambda cell,o : is_around( 10 , unity.S , cell, o) , s) and not (at_action_cell( lambda cell,o : is_around( 5 , unity.S , cell, o) , loc, s)))) or ((not (is_finish(loc)) and not (at_all_cell_with_value( unity.S_CLicked , lambda cell,o : is_around( 1 , unity.S_CLicked , cell, o) , s)) and at_action_cell( lambda cell,o : is_around( 1 , unity.S , cell, o) , loc, s) and not (at_all_cell_with_value( unity.B , lambda cell,o : is_around( 10 , unity.S , cell, o) , s))))
 Tree Learnt DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
             max_features=None, max_leaf_nodes=None,
             min_impurity_decrease=0.0, min_impurity_split=None,
             min_samples_leaf=1, min_samples_split=2,
             min_weight_fraction_leaf=0.0, presort=False, random_state=None,
             splitter='best')
-top_particle_probs: [0.20001572 0.19999673 0.19999673 0.19999541 0.19999541]
+top_particle_probs: [0.20839362 0.19791634 0.19789755 0.19789624 0.19789624]

@@ -7,7 +7,7 @@ import os
 import time
 
 
-class TestFirstGame(unittest.TestCase):
+class TestGameZero(unittest.TestCase):
     def setUp(self):
         self.startTime = time.time()
 
@@ -21,11 +21,11 @@ class TestFirstGame(unittest.TestCase):
         cache_program = False
         cache_matrix = False and cache_program
         useCache = False and cache_matrix
-        train = pipeline.pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
-        save_stdout = sys.stdout
-        sys.stdout = open('trash', 'w')
-        policy = train("UnityGame", range(0,3), 20, 300, 300, 5, interactive=True, specify_task="Naive_game", test_dimension="reduced" )
-        sys.stdout = save_stdout
+        train = pipeline.pipeline_manager(cache_dir,cache_program,cache_matrix,useCache, is_logging_enabled=False)
+        #save_stdout = sys.stdout
+        #sys.stdout = open('trash', 'w')
+        policy = train("UnityGame", range(0,3), 20, 300, 300, 5, interactive=True, specify_task="Game0", test_dimension="reduced" )
+        #sys.stdout = save_stdout
         env_names = 'UnityGame0-v0'
         env = gym.make(env_names)
         obs = env.reset()
@@ -48,7 +48,7 @@ class TestFirstGame(unittest.TestCase):
         train = pipeline.pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
         save_stdout = sys.stdout
         sys.stdout = open('trash', 'w')
-        policy = train("UnityGame", range(0,3), 20, 300, 300, 5, interactive=True, specify_task="Naive_game",test_dimension="reduced"  )
+        policy = train("UnityGame", range(0,3), 20, 300, 300, 5, interactive=True, specify_task="Game0",test_dimension="reduced"  )
         sys.stdout = save_stdout
         env_names = 'UnityGame1-v0'
         env = gym.make(env_names)
@@ -73,7 +73,7 @@ class TestFirstGame(unittest.TestCase):
         train = pipeline.pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
         save_stdout = sys.stdout
         sys.stdout = open('trash', 'w')
-        policy = train("UnityGame", range(0,3), 200, 4000, 300, 5, interactive=True, specify_task="Naive_game" )
+        policy = train("UnityGame", range(0,3), 200, 4000, 300, 5, interactive=True, specify_task="Game0" )
         sys.stdout = save_stdout
         env_names = 'UnityGame0-v0'
         env = gym.make(env_names)
@@ -99,7 +99,7 @@ class TestFirstGame(unittest.TestCase):
         train = pipeline.pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
         save_stdout = sys.stdout
         sys.stdout = open('trash', 'w')
-        policy = train("UnityGame", range(0,3), 200, 4000, 300, 5, interactive=True, specify_task="Naive_game" )
+        policy = train("UnityGame", range(0,3), 200, 4000, 300, 5, interactive=True, specify_task="Game0" )
         sys.stdout = save_stdout
         env_names = 'UnityGame1-v0'
         env = gym.make(env_names)
@@ -138,7 +138,7 @@ class TestSecondGame(unittest.TestCase):
         train = pipeline.pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
         save_stdout = sys.stdout
         sys.stdout = open('trash', 'w')
-        policy = train("UnityGame", range(0,4), 200, 4000, 300, 5, interactive=True, specify_task="Put_obj_in_boxes")
+        policy = train("UnityGame", range(0,4), 200, 4000, 300, 5, interactive=True, specify_task="Game1")
         sys.stdout = save_stdout
         env_names = 'UnityGame2-v0'
         env = gym.make(env_names)

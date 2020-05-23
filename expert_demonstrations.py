@@ -10,7 +10,9 @@ import UnityDemo.GetDemonstration
 # from interactiveLearning import InteractiveLearning
 from cache_utils import demonstration_saver
 #from globals_var import action, action_done
-#matplotlib.use('TkAgg')
+import platform
+if platform.system() == 'Darwin':
+    matplotlib.use('TkAgg')
 
 # def save_interactive_demos():
 #     if demonstrations != None:
@@ -234,10 +236,10 @@ def expert_xyz_policy(layout, interactive = False):
 
 def unity_demontration(demo_number, specify_task = None, test_dimemsion = None):
     if specify_task:
-        if specify_task == "Naive_game":
-            demos = ["demo1.json","demo2.json","demo3.json"]
-        elif specify_task == "Put_obj_in_boxes":
-            demos = ["MultipleObJDemo1Box.json","MultipleObJDemo2Box.json","MultipleObJDemo3Box.json","MultipleObJDemo4Box.json"]
+        if specify_task == "Game0":
+            demos = ["Game0/demo1.json","Game0/demo2.json","Game0/demo3.json"]
+        elif specify_task == "Game1":
+            demos = ["Game1/MultipleObJDemo1Box.json","Game1/MultipleObJDemo2Box.json","Game1/MultipleObJDemo3Box.json","Game1/MultipleObJDemo4Box.json"]
     else:
         demos = ["MultipleObJDemo1Box.json","MultipleObJDemo2Box.json","MultipleObJDemo3Box.json","MultipleObJDemo4Box.json"]
     return UnityDemo.GetDemonstration.DemonstrationHandler(demos[demo_number], false_demonstration_per_step=0, random_action_as_fake = False)
