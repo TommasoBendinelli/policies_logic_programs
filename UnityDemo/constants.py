@@ -22,10 +22,11 @@ CUBE_BROWN_Clicked = "CBR_highlighted"
 CUBE_PINK = "CP"
 CUBE_PINK_Clicked = "CP_highlighted"
 CUBE_YELLOW = "CY"
-CUBE_YELLOW_Clicked = "CY_Clicked"
+CUBE_YELLOW_Clicked = "CY_highlighted"
 CUBE_GREY = "CGR" 
 CUBE_GREY_Clicked = "CGR_highlighted"
-PICKED_UP = [S_CLicked, P_Clicked,CUBE_RED_Clicked,CUBE_BLUE_Clicked,CUBE_BLACK_Clicked,CUBE_PINK_Clicked,CUBE_YELLOW_Clicked,CUBE_GREY_Clicked]
+Clicked = "highlighted"
+PICKED_UP = [Clicked] #[S_CLicked, P_Clicked,CUBE_RED_Clicked,CUBE_BLUE_Clicked,CUBE_BLACK_Clicked,CUBE_PINK_Clicked,CUBE_YELLOW_Clicked,CUBE_GREY_Clicked]
 TERRAIN = [None, B]
 OBJECTS = [S,P,CUBE_RED,CUBE_BLUE,CUBE_GREEN,CUBE_BLACK,CUBE_PINK,CUBE_YELLOW,CUBE_GREY]
 

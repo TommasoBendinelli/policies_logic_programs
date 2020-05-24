@@ -105,23 +105,23 @@ class DemonstrationHandler():
                     #     print("Hello2")
                     if (demonstration_seq[step][x][y] == demonstration_seq[step-1][x][y]):
                         all_equal = all_equal + 1
-                    elif demonstration_seq[step-1][x][y] == P:
-                        final_demo.insert(step+counter,deepcopy(final_demo[step-1+counter]))
-                        final_demo[step+counter][x][y] =  "P_highlighted"
-                        action.append((x,y))
-                        if flag == 1:
-                            action[-1], action[-2] = action[-2], action[-1]
-                        counter = counter + 1
-                    elif demonstration_seq[step-1][x][y] == S:
-                        final_demo.insert(step+counter,deepcopy(final_demo[step-1+counter]))
-                        final_demo[step+counter][x][y] =  "S_highlighted"
-                        action.append((x,y))
-                        if flag == 1:
-                            action[-1], action[-2] = action[-2], action[-1]
-                        counter = counter + 1
+                    # elif demonstration_seq[step-1][x][y] == P:
+                    #     final_demo.insert(step+counter,deepcopy(final_demo[step-1+counter]))
+                    #     final_demo[step+counter][x][y] =  "highlighted"
+                    #     action.append((x,y))
+                    #     if flag == 1:
+                    #         action[-1], action[-2] = action[-2], action[-1]
+                    #     counter = counter + 1
+                    # elif demonstration_seq[step-1][x][y] == S:
+                    #     final_demo.insert(step+counter,deepcopy(final_demo[step-1+counter]))
+                    #     final_demo[step+counter][x][y] =  "highlighted"
+                    #     action.append((x,y))
+                    #     if flag == 1:
+                    #         action[-1], action[-2] = action[-2], action[-1]
+                    #     counter = counter + 1
                     elif demonstration_seq[step-1][x][y] in OBJECTS:
                         final_demo.insert(step+counter,deepcopy(final_demo[step-1+counter]))
-                        final_demo[step+counter][x][y] =  demonstration_seq[step-1][x][y] + "_highlighted"
+                        final_demo[step+counter][x][y] =  "highlighted"
                         action.append((x,y))
                         if flag == 1:
                             action[-1], action[-2] = action[-2], action[-1]

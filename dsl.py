@@ -17,7 +17,6 @@ def cell_is_value(value, cell, obs):
         focus = None
     else:
         focus = obs[cell[0], cell[1]]
-
     return (focus == value)
 
 def at_cell_with_value(value, local_program, obs):
