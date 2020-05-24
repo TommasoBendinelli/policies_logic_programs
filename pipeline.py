@@ -406,10 +406,7 @@ def pipeline_manager(cache_dir,cache_program,cache_matrix,useCache,is_logging_en
         # This loop avoids memory issues
         for i in range(l, num_programs, program_interval):
             end = min(i+program_interval, num_programs)
-            print('Iteration {} of {}'.format(i, num_programs), end='\r')
-
-            
-            
+            print("Iteration {} of {}".format(i, num_programs), end='\r')
             #Debugging
             # fn = partial(apply_programs, programs[i:end])
             # if i == 49:
@@ -888,7 +885,7 @@ if __name__  == "__main__":
     #train("TwoPileNim", range(11), 1, 31, 100, 25)
     #policy = train("UnityGame", range(0,4), 50, 1000, num_dts= 500, max_num_particles = 5, interactive=True, specify_task="Put_obj_in_boxes" )
     train = pipeline_manager(cache_dir,cache_program,cache_matrix,useCache)
-    policy = train("UnityGame", range(0,4), 200, 2000, 300, 5, interactive=True, specify_task="Game1")
+    policy = train("UnityGame", range(0,4), 200, 4000, 300, 5, interactive=True, specify_task="Game1")
     #policy = interactive_learning()
     test_results = test(policy, "UnityGame", range(1,2), record_videos=True, interactive = False)
     #print("Test results:", test_results)

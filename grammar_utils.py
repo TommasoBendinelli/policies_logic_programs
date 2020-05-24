@@ -58,6 +58,24 @@ def get_child_programs(program, grammar):
 def program_is_complete(program):
     return find_symbol(program) == None
 
+def maximum_number_of_program(grammar):
+    queue = []
+    count = 0
+    counter = itertools.count()
+
+    hq.heappush(queue, (0, 0, next(counter), [0]))
+    while True:
+        if queue:
+            priority, production_neg_log_prob, _, program = hq.heappop(queue)
+        else:
+            return count
+        for child_program, child_production_prob, child_priority in get_child_programs(program, grammar):
+            if program_is_complete(child_program):
+                count = count + 1
+            else:
+                hq.heappush(queue, (priority + child_priority, production_neg_log_prob - np.log(child_production_prob), 
+                                    next(counter), child_program))
+
 def generate_programs(grammar, start_symbol=0, num_iterations=100000000, game_class = "Idk"):
     queue = []
     counter = itertools.count()

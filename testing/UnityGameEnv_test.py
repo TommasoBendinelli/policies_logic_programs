@@ -5,6 +5,9 @@ import numpy as np
 import sys
 import os
 import time
+from grammar_utils import maximum_number_of_program
+from env_settings import get_object_types
+from dsl import create_grammar_unity
 
 class UnityGameEnv_test(unittest.TestCase):
     def setUp(self):
@@ -25,24 +28,17 @@ class UnityGameEnv_test(unittest.TestCase):
             self.assertEqual(obs[action[t]],results[t])
             new_obs, reward, done, debug_info = env.step(action[t])
             obs = new_obs
-        # cache_dir = 'cache'
-        # useCache = False
-        # cache_program = False
-        # cache_matrix = False and cache_program
-        # useCache = False and cache_matrix
-        # train = pipeline.pipeline_manager(cache_dir,cache_program,cache_matrix,useCache, is_logging_enabled=False)
-        # #save_stdout = sys.stdout
-        # #sys.stdout = open('trash', 'w')
-        # policy = train("UnityGame", range(0,3), 20, 200, 300, 5, interactive=True, specify_task="Game0", test_dimension="reduced" )
-        # #sys.stdout = save_stdout
-        # env_names = 'UnityGame0-v0'
-        # env = gym.make(env_names)
-        # obs = env.reset()
-        # total_reward = 0.
-        # for t in range(3):
-        #     action = policy(obs)
-        #     self.assertEqual(obs[action],results[t])
-        #     new_obs, reward, done, debug_info = env.step(action)
-        #     obs = new_obs
-
-        # env.close()
+    
+    def test_total_number(self):
+        base_class_name = "UnityGame_reduced"
+        object_types = get_object_types(base_class_name)
+        object_types = object_types 
+        grammar = create_grammar_unity(object_types) 
+        num = maximum_number_of_program(grammar)
+        self.assertEqual(num,257)
+        base_class_name = "UnityGame"
+        object_types = get_object_types(base_class_name)
+        object_types = object_types 
+        grammar = create_grammar_unity(object_types) 
+        num = maximum_number_of_program(grammar)
+        self.assertEqual(num,2113)
